@@ -35,7 +35,7 @@
             labelEventName = new Label();
             labelEventDescription = new Label();
             labelEventTime = new Label();
-            labelEventParticipants = new Label();
+            labelEventUsers = new Label();
             labelEventCategory = new Label();
             groupBoxView = new GroupBox();
             btnMainApplyFilter = new Button();
@@ -112,7 +112,7 @@
             groupBoxDetails.Controls.Add(labelEventName);
             groupBoxDetails.Controls.Add(labelEventDescription);
             groupBoxDetails.Controls.Add(labelEventTime);
-            groupBoxDetails.Controls.Add(labelEventParticipants);
+            groupBoxDetails.Controls.Add(labelEventUsers);
             groupBoxDetails.Controls.Add(labelEventCategory);
             groupBoxDetails.Location = new Point(392, 6);
             groupBoxDetails.Name = "groupBoxDetails";
@@ -157,14 +157,14 @@
             labelEventTime.TabIndex = 3;
             labelEventTime.Text = "Время проведения:";
             // 
-            // labelEventParticipants
+            // labelEventUsers
             // 
-            labelEventParticipants.AutoSize = true;
-            labelEventParticipants.Location = new Point(10, 280);
-            labelEventParticipants.Name = "labelEventParticipants";
-            labelEventParticipants.Size = new Size(84, 20);
-            labelEventParticipants.TabIndex = 4;
-            labelEventParticipants.Text = "Участники:";
+            labelEventUsers.AutoSize = true;
+            labelEventUsers.Location = new Point(10, 280);
+            labelEventUsers.Name = "labelEventUsers";
+            labelEventUsers.Size = new Size(84, 20);
+            labelEventUsers.TabIndex = 4;
+            labelEventUsers.Text = "Участники:";
             // 
             // labelEventCategory
             // 
@@ -225,7 +225,7 @@
             labelMainFilterCategory.Size = new Size(84, 20);
             labelMainFilterCategory.TabIndex = 2;
             labelMainFilterCategory.Text = "Категория:";
-            labelMainFilterCategory.Click += labelMainFilterCategory_Click;
+
             // 
             // labelMainFilterDate
             // 
@@ -243,7 +243,7 @@
             lbMainEvents.Name = "lbMainEvents";
             lbMainEvents.Size = new Size(350, 464);
             lbMainEvents.TabIndex = 5;
-            lbMainEvents.SelectedIndexChanged += lbMainEvents_SelectedIndexChanged;
+
             // 
             // tabPageEdit
             // 
@@ -372,6 +372,7 @@
             btnAddEvent.TabIndex = 10;
             btnAddEvent.Text = "Добавить";
             btnAddEvent.UseVisualStyleBackColor = true;
+            btnAddEvent.Click += btnAddEvent_Click;
             // 
             // groupBoxEdit
             // 
@@ -515,7 +516,7 @@
             btnDelete.TabIndex = 1;
             btnDelete.Text = "Удалить";
             btnDelete.UseVisualStyleBackColor = true;
-            btnDelete.Click += btnDelete_Click;
+
             // 
             // Form1
             // 
@@ -557,7 +558,7 @@
         private System.Windows.Forms.Label labelEventName;
         private System.Windows.Forms.Label labelEventDescription;
         private System.Windows.Forms.Label labelEventTime;
-        private System.Windows.Forms.Label labelEventParticipants;
+        private System.Windows.Forms.Label labelEventUsers;
         private System.Windows.Forms.Label labelEventCategory;
         // Вкладка "Редактирование" – группы как в предыдущем примере
         private System.Windows.Forms.GroupBox groupBoxAdd;
