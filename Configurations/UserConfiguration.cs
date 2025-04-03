@@ -14,11 +14,11 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
             .WithOne(ue => ue.User)
             .HasForeignKey(ue => ue.UserID);
         builder.HasData(
-        new User { UserID = 1, Name = "Иван Петров" },
-        new User { UserID = 2, Name = "Мария Сидорова" },
-        new User { UserID = 3, Name = "Алексей Иванов" },
-        new User { UserID = 4, Name = "Елена Васильева" },
-        new User { UserID = 5, Name = "Дмитрий Смирнов" }
+        new User { UserID = 1, Name = "Алмаз" },
+        new User { UserID = 2, Name = "Олег" },
+        new User { UserID = 3, Name = "Иван Иванов" },
+        new User { UserID = 4, Name = "Айназ" },
+        new User { UserID = 5, Name = "Никита" }
     );
 
     }

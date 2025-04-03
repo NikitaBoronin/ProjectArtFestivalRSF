@@ -12,6 +12,10 @@ namespace ArtFestival.Model
         public string Category { get; set; }
         public string? ImagePath { get; set; }
 
-        public List<EventUser> Users { get; set; } 
+        public List<EventUser> Users { get; set; }
+        public override string ToString()
+        {
+            return Title;
+        }
     }
 }

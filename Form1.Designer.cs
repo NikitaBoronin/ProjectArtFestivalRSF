@@ -225,7 +225,6 @@
             labelMainFilterCategory.Size = new Size(84, 20);
             labelMainFilterCategory.TabIndex = 2;
             labelMainFilterCategory.Text = "Категория:";
-
             // 
             // labelMainFilterDate
             // 
@@ -243,7 +242,6 @@
             lbMainEvents.Name = "lbMainEvents";
             lbMainEvents.Size = new Size(350, 464);
             lbMainEvents.TabIndex = 5;
-
             // 
             // tabPageEdit
             // 
@@ -346,6 +344,7 @@
             cmbAddCategory.Name = "cmbAddCategory";
             cmbAddCategory.Size = new Size(180, 28);
             cmbAddCategory.TabIndex = 7;
+            cmbAddCategory.SelectedIndexChanged += cmbAddCategory_SelectedIndexChanged;
             // 
             // labelAddParticipants
             // 
@@ -516,7 +515,6 @@
             btnDelete.TabIndex = 1;
             btnDelete.Text = "Удалить";
             btnDelete.UseVisualStyleBackColor = true;
-
             // 
             // Form1
             // 

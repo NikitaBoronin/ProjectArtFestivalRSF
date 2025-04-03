@@ -10,18 +10,13 @@ namespace ArtFestival
         public DbSet<Event> Events { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<EventUser> EventUsers { get; set; }
-
-        // Основной конструктор, который используется в коде
         public ArtFestivalDbContext(DbContextOptions<ArtFestivalDbContext> options)
             : base(options)
         {
         }
-
-        // Конструктор без параметров (используется EF при миграции)
         public ArtFestivalDbContext()
         {
         }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -35,7 +30,6 @@ namespace ArtFestival
                 optionsBuilder.UseNpgsql(connectionString);
             }
         }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
