@@ -93,6 +93,7 @@
             tabControlMain.SelectedIndex = 0;
             tabControlMain.Size = new Size(800, 600);
             tabControlMain.TabIndex = 0;
+            tabControlMain.BindingContextChanged += tabControlMain_BindingContextChanged;
             // 
             // tabPageMain
             // 
@@ -344,7 +345,6 @@
             cmbAddCategory.Name = "cmbAddCategory";
             cmbAddCategory.Size = new Size(180, 28);
             cmbAddCategory.TabIndex = 7;
-            cmbAddCategory.SelectedIndexChanged += cmbAddCategory_SelectedIndexChanged;
             // 
             // labelAddParticipants
             // 

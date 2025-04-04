@@ -17,11 +17,7 @@ namespace ArtFestival
             var options = new DbContextOptionsBuilder<ArtFestivalDbContext>()
                 .UseNpgsql("Host=localhost;Port=5432;Database=eventsdb;Username=postgres;Password=12345")
                 .Options;
-
             Application.Run(new Form1());
-
-
-
         }
     }
 }

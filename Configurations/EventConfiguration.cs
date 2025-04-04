@@ -1,7 +1,6 @@
 ﻿using ArtFestival.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System.Reflection.Emit;
 
 public class EventConfiguration : IEntityTypeConfiguration<Event>
 {

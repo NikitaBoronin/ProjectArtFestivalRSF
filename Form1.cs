@@ -33,7 +33,7 @@ namespace ArtFestival
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка: {ex.Message}"); 
+                MessageBox.Show($"Ошибка: {ex.Message}");
             }
         }
         private async void btnAddEvent_Click(object sender, EventArgs e)
@@ -60,24 +60,21 @@ namespace ArtFestival
                     MessageBox.Show("Выберите хотя бы одного участника");
                     return;
                 }
-
-
-
                 var newEvent = new Event
                 {
                     EventDate = dtpAddDate.Value.ToUniversalTime(),
                     Title = txtAddTitle.Text,
                     Description = txtAddDescription.Text,
                     Category = cmbAddCategory.SelectedItem?.ToString(),
-                    ImagePath = await UploadImageAsync(),
-                    Users = new List<EventUser>()
+                    Users = new List<EventUser>(),
+                    ImagePath = await UploadImageAsync()
                 };
 
                 foreach (var user in clbAddParticipants.CheckedItems.Cast<User>())
                 {
                     newEvent.Users.Add(new EventUser { UserID = user.UserID });
                 }
-                var allEvents = _db.Events.ToList(); 
+                var allEvents = _db.Events.ToList();
                 foreach (var ev in allEvents)
                 {
                     if (ev.Title == txtAddTitle.Text && ev.EventDate.Date == dtpAddDate.Value.Date)
@@ -103,7 +100,7 @@ namespace ArtFestival
                 ofd.Filter = "Изображения|*.jpg;*.png";
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
-            
+
                     return ofd.FileName;
                 }
             }
@@ -131,7 +128,7 @@ namespace ArtFestival
             }
         }
 
-        private void cmbAddCategory_SelectedIndexChanged(object sender, EventArgs e)
+        private void tabControlMain_BindingContextChanged(object sender, EventArgs e)
         {
 
         }

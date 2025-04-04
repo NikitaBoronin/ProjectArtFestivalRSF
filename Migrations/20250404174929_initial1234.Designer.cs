@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ArtFestival.Migrations
 {
     [DbContext(typeof(ArtFestivalDbContext))]
-    [Migration("20250402185115_initial1")]
-    partial class initial1
+    [Migration("20250404174929_initial1234")]
+    partial class initial1234
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -76,27 +76,27 @@ namespace ArtFestival.Migrations
                         new
                         {
                             UserID = 1,
-                            Name = "Иван Петров"
+                            Name = "Алмаз"
                         },
                         new
                         {
                             UserID = 2,
-                            Name = "Мария Сидорова"
+                            Name = "Олег"
                         },
                         new
                         {
                             UserID = 3,
-                            Name = "Алексей Иванов"
+                            Name = "Иван Иванов"
                         },
                         new
                         {
                             UserID = 4,
-                            Name = "Елена Васильева"
+                            Name = "Айназ"
                         },
                         new
                         {
                             UserID = 5,
-                            Name = "Дмитрий Смирнов"
+                            Name = "Никита"
                         });
                 });
 

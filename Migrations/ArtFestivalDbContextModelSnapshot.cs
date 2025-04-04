@@ -73,27 +73,27 @@ namespace ArtFestival.Migrations
                         new
                         {
                             UserID = 1,
-                            Name = "Иван Петров"
+                            Name = "Алмаз"
                         },
                         new
                         {
                             UserID = 2,
-                            Name = "Мария Сидорова"
+                            Name = "Олег"
                         },
                         new
                         {
                             UserID = 3,
-                            Name = "Алексей Иванов"
+                            Name = "Иван Иванов"
                         },
                         new
                         {
                             UserID = 4,
-                            Name = "Елена Васильева"
+                            Name = "Айназ"
                         },
                         new
                         {
                             UserID = 5,
-                            Name = "Дмитрий Смирнов"
+                            Name = "Никита"
                         });
                 });
 

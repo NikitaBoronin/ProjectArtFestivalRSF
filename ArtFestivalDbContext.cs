@@ -16,6 +16,8 @@ namespace ArtFestival
         }
         public ArtFestivalDbContext()
         {
+            //Database.EnsureDeleted();
+            //Database.EnsureCreated();
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
