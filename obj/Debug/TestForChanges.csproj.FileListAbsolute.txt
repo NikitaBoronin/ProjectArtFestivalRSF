@@ -1,0 +1,10 @@
+C:\Users\0\source\repos\TestForChanges\bin\Debug\TestForChanges.exe.config
+C:\Users\0\source\repos\TestForChanges\bin\Debug\TestForChanges.exe
+C:\Users\0\source\repos\TestForChanges\bin\Debug\TestForChanges.pdb
+C:\Users\0\source\repos\TestForChanges\obj\Debug\TestForChanges.csproj.AssemblyReference.cache
+C:\Users\0\source\repos\TestForChanges\obj\Debug\TestForChanges.Properties.Resources.resources
+C:\Users\0\source\repos\TestForChanges\obj\Debug\TestForChanges.csproj.GenerateResource.cache
+C:\Users\0\source\repos\TestForChanges\obj\Debug\TestForChanges.csproj.CoreCompileInputs.cache
+C:\Users\0\source\repos\TestForChanges\obj\Debug\TestForChanges.exe
+C:\Users\0\source\repos\TestForChanges\obj\Debug\TestForChanges.pdb
+C:\Users\0\source\repos\TestForChanges\obj\Debug\TestForChanges.Form1.resources
