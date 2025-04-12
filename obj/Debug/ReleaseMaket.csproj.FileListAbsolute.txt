@@ -1,0 +1,4 @@
+C:\Users\0\source\repos\ReleaseMaket\obj\Debug\ReleaseMaket.csproj.AssemblyReference.cache
+C:\Users\0\source\repos\ReleaseMaket\obj\Debug\ReleaseMaket.Properties.Resources.resources
+C:\Users\0\source\repos\ReleaseMaket\obj\Debug\ReleaseMaket.csproj.GenerateResource.cache
+C:\Users\0\source\repos\ReleaseMaket\obj\Debug\ReleaseMaket.csproj.CoreCompileInputs.cache
