@@ -60,6 +60,7 @@ namespace ArtFestival
                     MessageBox.Show("Выберите хотя бы одного участника");
                     return;
                 }
+
                 var newEvent = new Event
                 {
                     EventDate = dtpAddDate.Value.ToUniversalTime(),
@@ -132,5 +133,11 @@ namespace ArtFestival
         {
 
         }
+
+        private void cmbAddCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
+
 }

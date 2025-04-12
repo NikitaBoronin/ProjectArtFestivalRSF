@@ -307,9 +307,11 @@
             dtpAddDate.CustomFormat = "dd.MM.yyyy HH:mm";
             dtpAddDate.Format = DateTimePickerFormat.Custom;
             dtpAddDate.Location = new Point(100, 50);
+            dtpAddDate.MinDate = new DateTime(2025, 4, 5, 9, 55, 18, 0);
             dtpAddDate.Name = "dtpAddDate";
             dtpAddDate.Size = new Size(180, 27);
             dtpAddDate.TabIndex = 3;
+            dtpAddDate.Value = new DateTime(2025, 4, 5, 9, 55, 18, 0);
             // 
             // labelAddDescription
             // 
@@ -345,6 +347,7 @@
             cmbAddCategory.Name = "cmbAddCategory";
             cmbAddCategory.Size = new Size(180, 28);
             cmbAddCategory.TabIndex = 7;
+            cmbAddCategory.SelectedIndexChanged += cmbAddCategory_SelectedIndexChanged;
             // 
             // labelAddParticipants
             // 
@@ -540,9 +543,9 @@
 
         #endregion
 
+        // Объявление элементов управления
         private System.Windows.Forms.TabControl tabControlMain;
-        private System.Windows.Forms.TabPage tabPageMain;
-        private System.Windows.Forms.TabPage tabPageEdit;
+        private System.Windows.Forms.TabPage tabPageMain, tabPageAdd, tabPageEdit, tabPageDelete, tabPageReport;
         // Вкладка "Главное меню"
         private System.Windows.Forms.GroupBox groupBoxView;
         private System.Windows.Forms.Label labelMainFilterDate;
@@ -558,7 +561,7 @@
         private System.Windows.Forms.Label labelEventTime;
         private System.Windows.Forms.Label labelEventUsers;
         private System.Windows.Forms.Label labelEventCategory;
-        // Вкладка "Редактирование" – группы как в предыдущем примере
+        // Вкладка "Добавить"
         private System.Windows.Forms.GroupBox groupBoxAdd;
         private System.Windows.Forms.Label labelAddTitle;
         private System.Windows.Forms.TextBox txtAddTitle;
@@ -571,6 +574,10 @@
         private System.Windows.Forms.Label labelAddParticipants;
         private System.Windows.Forms.CheckedListBox clbAddParticipants;
         private System.Windows.Forms.Button btnAddEvent;
+        private System.Windows.Forms.Button btnAddPicture;
+        private System.Windows.Forms.Label labelListElementType;
+        private System.Windows.Forms.ComboBox cmbListElementType;
+        // Вкладка "Редактировать"
         private System.Windows.Forms.GroupBox groupBoxEdit;
         private System.Windows.Forms.ListBox lbEditEvents;
         private System.Windows.Forms.Label labelEditTitle;
@@ -583,8 +590,12 @@
         private System.Windows.Forms.CheckedListBox clbEditParticipants;
         private System.Windows.Forms.Button btnEditSelected;
         private System.Windows.Forms.Button btnSaveChanges;
+        // Вкладка "Удалить"
         private System.Windows.Forms.GroupBox groupBoxDelete;
         private System.Windows.Forms.ListBox lbDeleteEvents;
         private System.Windows.Forms.Button btnDelete;
+        // Вкладка "Отчет"
+        private System.Windows.Forms.GroupBox groupBoxReport;
+        private System.Windows.Forms.Button btnGenerateReport;
     }
 }
