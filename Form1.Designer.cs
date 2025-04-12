@@ -15,7 +15,6 @@
 
         private void InitializeComponent()
         {
-            // Добавляем все элементы из старого кода
             this.labelMainFilterDate = new System.Windows.Forms.Label();
             this.labelMainFilterCategory = new System.Windows.Forms.Label();
             this.labelAddTitle = new System.Windows.Forms.Label();
@@ -28,8 +27,6 @@
             this.labelEditDate = new System.Windows.Forms.Label();
             this.labelEditCategory = new System.Windows.Forms.Label();
             this.labelEditParticipants = new System.Windows.Forms.Label();
-
-            // Основные элементы с новыми именами
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPageMain = new System.Windows.Forms.TabPage();
             this.groupBoxView = new System.Windows.Forms.GroupBox();
@@ -44,9 +41,14 @@
             this.labelEventTime = new System.Windows.Forms.Label();
             this.labelEventUsers = new System.Windows.Forms.Label();
             this.labelEventCategory = new System.Windows.Forms.Label();
-            this.btnGenerateReport = new System.Windows.Forms.Button();
             this.tabPageAdd = new System.Windows.Forms.TabPage();
             this.groupBoxAdd = new System.Windows.Forms.GroupBox();
+            this.labelListElementTypee = new System.Windows.Forms.Label();
+            this.labelAddParticipantss = new System.Windows.Forms.Label();
+            this.labelAddCategoryy = new System.Windows.Forms.Label();
+            this.labelAddDescriptionn = new System.Windows.Forms.Label();
+            this.labelAddDatee = new System.Windows.Forms.Label();
+            this.labelAddTitlee = new System.Windows.Forms.Label();
             this.txtAddTitle = new System.Windows.Forms.TextBox();
             this.dtpAddDate = new System.Windows.Forms.DateTimePicker();
             this.txtAddDescription = new System.Windows.Forms.TextBox();
@@ -70,11 +72,12 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.tabPageReport = new System.Windows.Forms.TabPage();
             this.groupBoxReport = new System.Windows.Forms.GroupBox();
-            ((System.ComponentModel.ISupportInitialize)(this.picEventImage)).BeginInit();
+            this.btnGenerateReport = new System.Windows.Forms.Button();
             this.tabControlMain.SuspendLayout();
             this.tabPageMain.SuspendLayout();
             this.groupBoxView.SuspendLayout();
             this.groupBoxDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picEventImage)).BeginInit();
             this.tabPageAdd.SuspendLayout();
             this.groupBoxAdd.SuspendLayout();
             this.tabPageEdit.SuspendLayout();
@@ -84,7 +87,6 @@
             this.tabPageReport.SuspendLayout();
             this.groupBoxReport.SuspendLayout();
             this.SuspendLayout();
-
             // 
             // labelMainFilterDate
             // 
@@ -205,7 +207,6 @@
             this.labelEditParticipants.TabIndex = 8;
             this.labelEditParticipants.Text = "Участники:";
             this.labelEditParticipants.Visible = false;
-
             // 
             // tabControlMain
             // 
@@ -218,7 +219,7 @@
             this.tabControlMain.Location = new System.Drawing.Point(0, 0);
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedIndex = 0;
-            this.tabControlMain.Size = new System.Drawing.Size(1000, 600);
+            this.tabControlMain.Size = new System.Drawing.Size(875, 633);
             this.tabControlMain.TabIndex = 0;
             // 
             // tabPageMain
@@ -229,7 +230,7 @@
             this.tabPageMain.Location = new System.Drawing.Point(4, 25);
             this.tabPageMain.Name = "tabPageMain";
             this.tabPageMain.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageMain.Size = new System.Drawing.Size(992, 571);
+            this.tabPageMain.Size = new System.Drawing.Size(867, 604);
             this.tabPageMain.TabIndex = 0;
             this.tabPageMain.Text = "Главное меню";
             // 
@@ -279,7 +280,7 @@
             this.lbMainEvents.ItemHeight = 16;
             this.lbMainEvents.Location = new System.Drawing.Point(20, 100);
             this.lbMainEvents.Name = "lbMainEvents";
-            this.lbMainEvents.Size = new System.Drawing.Size(420, 436);
+            this.lbMainEvents.Size = new System.Drawing.Size(420, 420);
             this.lbMainEvents.TabIndex = 3;
             // 
             // groupBoxDetails
@@ -291,7 +292,6 @@
             this.groupBoxDetails.Controls.Add(this.labelEventTime);
             this.groupBoxDetails.Controls.Add(this.labelEventUsers);
             this.groupBoxDetails.Controls.Add(this.labelEventCategory);
-            this.groupBoxDetails.Controls.Add(this.btnGenerateReport);
             this.groupBoxDetails.Location = new System.Drawing.Point(500, 10);
             this.groupBoxDetails.Name = "groupBoxDetails";
             this.groupBoxDetails.Size = new System.Drawing.Size(480, 553);
@@ -313,7 +313,7 @@
             this.labelEventName.AutoSize = true;
             this.labelEventName.Location = new System.Drawing.Point(190, 30);
             this.labelEventName.Name = "labelEventName";
-            this.labelEventName.Size = new System.Drawing.Size(126, 16);
+            this.labelEventName.Size = new System.Drawing.Size(133, 16);
             this.labelEventName.TabIndex = 1;
             this.labelEventName.Text = "Название события:";
             // 
@@ -322,7 +322,7 @@
             this.labelEventDescription.AutoSize = true;
             this.labelEventDescription.Location = new System.Drawing.Point(190, 60);
             this.labelEventDescription.Name = "labelEventDescription";
-            this.labelEventDescription.Size = new System.Drawing.Size(77, 16);
+            this.labelEventDescription.Size = new System.Drawing.Size(75, 16);
             this.labelEventDescription.TabIndex = 2;
             this.labelEventDescription.Text = "Описание:";
             // 
@@ -331,7 +331,7 @@
             this.labelEventTime.AutoSize = true;
             this.labelEventTime.Location = new System.Drawing.Point(190, 110);
             this.labelEventTime.Name = "labelEventTime";
-            this.labelEventTime.Size = new System.Drawing.Size(111, 16);
+            this.labelEventTime.Size = new System.Drawing.Size(87, 16);
             this.labelEventTime.TabIndex = 3;
             this.labelEventTime.Text = "Дата/Время:";
             // 
@@ -340,7 +340,7 @@
             this.labelEventUsers.AutoSize = true;
             this.labelEventUsers.Location = new System.Drawing.Point(190, 140);
             this.labelEventUsers.Name = "labelEventUsers";
-            this.labelEventUsers.Size = new System.Drawing.Size(84, 16);
+            this.labelEventUsers.Size = new System.Drawing.Size(80, 16);
             this.labelEventUsers.TabIndex = 4;
             this.labelEventUsers.Text = "Участники:";
             // 
@@ -349,17 +349,9 @@
             this.labelEventCategory.AutoSize = true;
             this.labelEventCategory.Location = new System.Drawing.Point(190, 170);
             this.labelEventCategory.Name = "labelEventCategory";
-            this.labelEventCategory.Size = new System.Drawing.Size(84, 16);
+            this.labelEventCategory.Size = new System.Drawing.Size(78, 16);
             this.labelEventCategory.TabIndex = 5;
             this.labelEventCategory.Text = "Категория:";
-            // 
-            // btnGenerateReport
-            // 
-            this.btnGenerateReport.Location = new System.Drawing.Point(0, 508);
-            this.btnGenerateReport.Name = "btnGenerateReport";
-            this.btnGenerateReport.Size = new System.Drawing.Size(327, 39);
-            this.btnGenerateReport.TabIndex = 6;
-            this.btnGenerateReport.Text = "Сформировать Excel отчёт";
             // 
             // tabPageAdd
             // 
@@ -367,13 +359,19 @@
             this.tabPageAdd.Controls.Add(this.groupBoxAdd);
             this.tabPageAdd.Location = new System.Drawing.Point(4, 25);
             this.tabPageAdd.Name = "tabPageAdd";
-            this.tabPageAdd.Size = new System.Drawing.Size(992, 571);
+            this.tabPageAdd.Size = new System.Drawing.Size(867, 604);
             this.tabPageAdd.TabIndex = 1;
             this.tabPageAdd.Text = "Добавить";
             // 
             // groupBoxAdd
             // 
             this.groupBoxAdd.BackColor = System.Drawing.Color.White;
+            this.groupBoxAdd.Controls.Add(this.labelListElementTypee);
+            this.groupBoxAdd.Controls.Add(this.labelAddParticipantss);
+            this.groupBoxAdd.Controls.Add(this.labelAddCategoryy);
+            this.groupBoxAdd.Controls.Add(this.labelAddDescriptionn);
+            this.groupBoxAdd.Controls.Add(this.labelAddDatee);
+            this.groupBoxAdd.Controls.Add(this.labelAddTitlee);
             this.groupBoxAdd.Controls.Add(this.txtAddTitle);
             this.groupBoxAdd.Controls.Add(this.dtpAddDate);
             this.groupBoxAdd.Controls.Add(this.txtAddDescription);
@@ -389,52 +387,106 @@
             this.groupBoxAdd.TabStop = false;
             this.groupBoxAdd.Text = "Добавление события";
             // 
+            // labelListElementTypee
+            // 
+            this.labelListElementTypee.AutoSize = true;
+            this.labelListElementTypee.Location = new System.Drawing.Point(6, 274);
+            this.labelListElementTypee.Name = "labelListElementTypee";
+            this.labelListElementTypee.Size = new System.Drawing.Size(128, 16);
+            this.labelListElementTypee.TabIndex = 13;
+            this.labelListElementTypee.Text = "Элемент в группе:";
+            // 
+            // labelAddParticipantss
+            // 
+            this.labelAddParticipantss.AutoSize = true;
+            this.labelAddParticipantss.Location = new System.Drawing.Point(6, 204);
+            this.labelAddParticipantss.Name = "labelAddParticipantss";
+            this.labelAddParticipantss.Size = new System.Drawing.Size(80, 16);
+            this.labelAddParticipantss.TabIndex = 12;
+            this.labelAddParticipantss.Text = "Участники:";
+            // 
+            // labelAddCategoryy
+            // 
+            this.labelAddCategoryy.AutoSize = true;
+            this.labelAddCategoryy.Location = new System.Drawing.Point(4, 161);
+            this.labelAddCategoryy.Name = "labelAddCategoryy";
+            this.labelAddCategoryy.Size = new System.Drawing.Size(78, 16);
+            this.labelAddCategoryy.TabIndex = 11;
+            this.labelAddCategoryy.Text = "Категория:";
+            // 
+            // labelAddDescriptionn
+            // 
+            this.labelAddDescriptionn.AutoSize = true;
+            this.labelAddDescriptionn.Location = new System.Drawing.Point(6, 95);
+            this.labelAddDescriptionn.Name = "labelAddDescriptionn";
+            this.labelAddDescriptionn.Size = new System.Drawing.Size(78, 16);
+            this.labelAddDescriptionn.TabIndex = 10;
+            this.labelAddDescriptionn.Text = "Описание: ";
+            // 
+            // labelAddDatee
+            // 
+            this.labelAddDatee.AutoSize = true;
+            this.labelAddDatee.Location = new System.Drawing.Point(6, 66);
+            this.labelAddDatee.Name = "labelAddDatee";
+            this.labelAddDatee.Size = new System.Drawing.Size(42, 16);
+            this.labelAddDatee.TabIndex = 9;
+            this.labelAddDatee.Text = "Дата:";
+            // 
+            // labelAddTitlee
+            // 
+            this.labelAddTitlee.AutoSize = true;
+            this.labelAddTitlee.Location = new System.Drawing.Point(6, 33);
+            this.labelAddTitlee.Name = "labelAddTitlee";
+            this.labelAddTitlee.Size = new System.Drawing.Size(76, 16);
+            this.labelAddTitlee.TabIndex = 8;
+            this.labelAddTitlee.Text = "Название:";
+            // 
             // txtAddTitle
             // 
-            this.txtAddTitle.Location = new System.Drawing.Point(20, 30);
+            this.txtAddTitle.Location = new System.Drawing.Point(88, 33);
             this.txtAddTitle.Name = "txtAddTitle";
-            this.txtAddTitle.Size = new System.Drawing.Size(300, 22);
+            this.txtAddTitle.Size = new System.Drawing.Size(211, 22);
             this.txtAddTitle.TabIndex = 0;
             // 
             // dtpAddDate
             // 
             this.dtpAddDate.CustomFormat = "dd.MM.yyyy HH:mm";
             this.dtpAddDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpAddDate.Location = new System.Drawing.Point(340, 30);
+            this.dtpAddDate.Location = new System.Drawing.Point(88, 61);
             this.dtpAddDate.Name = "dtpAddDate";
-            this.dtpAddDate.Size = new System.Drawing.Size(200, 22);
+            this.dtpAddDate.Size = new System.Drawing.Size(211, 22);
             this.dtpAddDate.TabIndex = 1;
             // 
             // txtAddDescription
             // 
-            this.txtAddDescription.Location = new System.Drawing.Point(20, 60);
+            this.txtAddDescription.Location = new System.Drawing.Point(88, 95);
             this.txtAddDescription.Multiline = true;
             this.txtAddDescription.Name = "txtAddDescription";
-            this.txtAddDescription.Size = new System.Drawing.Size(520, 80);
+            this.txtAddDescription.Size = new System.Drawing.Size(208, 54);
             this.txtAddDescription.TabIndex = 2;
             // 
             // cmbAddCategory
             // 
             this.cmbAddCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAddCategory.FormattingEnabled = true;
-            this.cmbAddCategory.Location = new System.Drawing.Point(560, 30);
+            this.cmbAddCategory.Location = new System.Drawing.Point(88, 161);
             this.cmbAddCategory.Name = "cmbAddCategory";
-            this.cmbAddCategory.Size = new System.Drawing.Size(200, 24);
+            this.cmbAddCategory.Size = new System.Drawing.Size(208, 24);
             this.cmbAddCategory.TabIndex = 3;
             // 
             // clbAddParticipants
             // 
             this.clbAddParticipants.FormattingEnabled = true;
-            this.clbAddParticipants.Location = new System.Drawing.Point(560, 60);
+            this.clbAddParticipants.Location = new System.Drawing.Point(88, 204);
             this.clbAddParticipants.Name = "clbAddParticipants";
-            this.clbAddParticipants.Size = new System.Drawing.Size(200, 89);
+            this.clbAddParticipants.Size = new System.Drawing.Size(208, 38);
             this.clbAddParticipants.TabIndex = 4;
             // 
             // btnAddPicture
             // 
-            this.btnAddPicture.Location = new System.Drawing.Point(20, 160);
+            this.btnAddPicture.Location = new System.Drawing.Point(0, 318);
             this.btnAddPicture.Name = "btnAddPicture";
-            this.btnAddPicture.Size = new System.Drawing.Size(150, 30);
+            this.btnAddPicture.Size = new System.Drawing.Size(150, 63);
             this.btnAddPicture.TabIndex = 5;
             this.btnAddPicture.Text = "Добавить картинку";
             // 
@@ -442,16 +494,16 @@
             // 
             this.cmbListElementType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbListElementType.FormattingEnabled = true;
-            this.cmbListElementType.Location = new System.Drawing.Point(180, 160);
+            this.cmbListElementType.Location = new System.Drawing.Point(146, 271);
             this.cmbListElementType.Name = "cmbListElementType";
             this.cmbListElementType.Size = new System.Drawing.Size(150, 24);
             this.cmbListElementType.TabIndex = 6;
             // 
             // btnAddEvent
             // 
-            this.btnAddEvent.Location = new System.Drawing.Point(340, 160);
+            this.btnAddEvent.Location = new System.Drawing.Point(176, 318);
             this.btnAddEvent.Name = "btnAddEvent";
-            this.btnAddEvent.Size = new System.Drawing.Size(150, 30);
+            this.btnAddEvent.Size = new System.Drawing.Size(120, 63);
             this.btnAddEvent.TabIndex = 7;
             this.btnAddEvent.Text = "Добавить событие";
             // 
@@ -461,7 +513,7 @@
             this.tabPageEdit.Controls.Add(this.groupBoxEdit);
             this.tabPageEdit.Location = new System.Drawing.Point(4, 25);
             this.tabPageEdit.Name = "tabPageEdit";
-            this.tabPageEdit.Size = new System.Drawing.Size(992, 571);
+            this.tabPageEdit.Size = new System.Drawing.Size(867, 604);
             this.tabPageEdit.TabIndex = 2;
             this.tabPageEdit.Text = "Редактировать";
             // 
@@ -488,7 +540,7 @@
             this.lbEditEvents.ItemHeight = 16;
             this.lbEditEvents.Location = new System.Drawing.Point(20, 30);
             this.lbEditEvents.Name = "lbEditEvents";
-            this.lbEditEvents.Size = new System.Drawing.Size(300, 196);
+            this.lbEditEvents.Size = new System.Drawing.Size(300, 180);
             this.lbEditEvents.TabIndex = 0;
             // 
             // txtEditTitle
@@ -521,7 +573,7 @@
             this.clbEditParticipants.FormattingEnabled = true;
             this.clbEditParticipants.Location = new System.Drawing.Point(340, 120);
             this.clbEditParticipants.Name = "clbEditParticipants";
-            this.clbEditParticipants.Size = new System.Drawing.Size(200, 89);
+            this.clbEditParticipants.Size = new System.Drawing.Size(200, 72);
             this.clbEditParticipants.TabIndex = 4;
             // 
             // btnEditSelected
@@ -546,7 +598,7 @@
             this.tabPageDelete.Controls.Add(this.groupBoxDelete);
             this.tabPageDelete.Location = new System.Drawing.Point(4, 25);
             this.tabPageDelete.Name = "tabPageDelete";
-            this.tabPageDelete.Size = new System.Drawing.Size(992, 571);
+            this.tabPageDelete.Size = new System.Drawing.Size(867, 604);
             this.tabPageDelete.TabIndex = 3;
             this.tabPageDelete.Text = "Удалить";
             // 
@@ -568,7 +620,7 @@
             this.lbDeleteEvents.ItemHeight = 16;
             this.lbDeleteEvents.Location = new System.Drawing.Point(20, 30);
             this.lbDeleteEvents.Name = "lbDeleteEvents";
-            this.lbDeleteEvents.Size = new System.Drawing.Size(300, 196);
+            this.lbDeleteEvents.Size = new System.Drawing.Size(300, 180);
             this.lbDeleteEvents.TabIndex = 0;
             // 
             // btnDelete
@@ -585,7 +637,7 @@
             this.tabPageReport.Controls.Add(this.groupBoxReport);
             this.tabPageReport.Location = new System.Drawing.Point(4, 25);
             this.tabPageReport.Name = "tabPageReport";
-            this.tabPageReport.Size = new System.Drawing.Size(992, 571);
+            this.tabPageReport.Size = new System.Drawing.Size(574, 393);
             this.tabPageReport.TabIndex = 4;
             this.tabPageReport.Text = "Отчет";
             // 
@@ -600,20 +652,27 @@
             this.groupBoxReport.TabStop = false;
             this.groupBoxReport.Text = "Генерация отчёта";
             // 
+            // btnGenerateReport
+            // 
+            this.btnGenerateReport.Location = new System.Drawing.Point(0, 508);
+            this.btnGenerateReport.Name = "btnGenerateReport";
+            this.btnGenerateReport.Size = new System.Drawing.Size(327, 39);
+            this.btnGenerateReport.TabIndex = 6;
+            this.btnGenerateReport.Text = "Сформировать Excel отчёт";
+            // 
             // Form1
             // 
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1000, 600);
+            this.ClientSize = new System.Drawing.Size(875, 633);
             this.Controls.Add(this.tabControlMain);
             this.Name = "Form1";
             this.Text = "Менеджер событий";
-            ((System.ComponentModel.ISupportInitialize)(this.picEventImage)).EndInit();
             this.tabControlMain.ResumeLayout(false);
             this.tabPageMain.ResumeLayout(false);
             this.groupBoxView.ResumeLayout(false);
-            this.groupBoxView.PerformLayout();
             this.groupBoxDetails.ResumeLayout(false);
             this.groupBoxDetails.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picEventImage)).EndInit();
             this.tabPageAdd.ResumeLayout(false);
             this.groupBoxAdd.ResumeLayout(false);
             this.groupBoxAdd.PerformLayout();
@@ -683,5 +742,11 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.TabPage tabPageReport;
         private System.Windows.Forms.GroupBox groupBoxReport;
+        private System.Windows.Forms.Label labelAddDatee;
+        private System.Windows.Forms.Label labelAddTitlee;
+        private System.Windows.Forms.Label labelAddParticipantss;
+        private System.Windows.Forms.Label labelAddCategoryy;
+        private System.Windows.Forms.Label labelAddDescriptionn;
+        private System.Windows.Forms.Label labelListElementTypee;
     }
 }

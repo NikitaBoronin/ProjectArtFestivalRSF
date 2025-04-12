@@ -2,3 +2,9 @@ C:\Users\0\source\repos\ReleaseMaket\obj\Debug\ReleaseMaket.csproj.AssemblyRefer
 C:\Users\0\source\repos\ReleaseMaket\obj\Debug\ReleaseMaket.Properties.Resources.resources
 C:\Users\0\source\repos\ReleaseMaket\obj\Debug\ReleaseMaket.csproj.GenerateResource.cache
 C:\Users\0\source\repos\ReleaseMaket\obj\Debug\ReleaseMaket.csproj.CoreCompileInputs.cache
+C:\Users\0\source\repos\ReleaseMaket\bin\Debug\ReleaseMaket.exe.config
+C:\Users\0\source\repos\ReleaseMaket\bin\Debug\ReleaseMaket.exe
+C:\Users\0\source\repos\ReleaseMaket\bin\Debug\ReleaseMaket.pdb
+C:\Users\0\source\repos\ReleaseMaket\obj\Debug\ReleaseMaket.Form1.resources
+C:\Users\0\source\repos\ReleaseMaket\obj\Debug\ReleaseMaket.exe
+C:\Users\0\source\repos\ReleaseMaket\obj\Debug\ReleaseMaket.pdb
