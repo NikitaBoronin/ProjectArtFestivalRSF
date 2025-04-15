@@ -9,7 +9,14 @@ public class EventConfiguration : IEntityTypeConfiguration<Event>
         builder.HasKey(e => e.EventID);
         builder.Property(e => e.EventID)
             .ValueGeneratedOnAdd();
+
         builder.Property(e => e.EventDate)
-               .HasColumnType("timestamp with time zone");
+            .HasColumnType("timestamp with time zone");
+
+        // Настройка связи с EventUser
+        builder.HasMany(e => e.Users)
+            .WithOne()
+            .HasForeignKey(eu => eu.EventID)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

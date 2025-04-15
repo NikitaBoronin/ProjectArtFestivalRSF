@@ -6,13 +6,19 @@ public class EventUserConfiguration : IEntityTypeConfiguration<EventUser>
 {
     public void Configure(EntityTypeBuilder<EventUser> builder)
     {
-        builder.HasKey(ep => new { ep.EventID, ep.UserID });
+        builder.HasKey(eu => new { eu.EventID, eu.UserID });
+
+        // Явно задаем имена ограничений
         builder.HasOne<Event>()
-               .WithMany()
-               .HasForeignKey(ep => ep.EventID);
+            .WithMany(e => e.Users)
+            .HasForeignKey(eu => eu.EventID)
+            .HasConstraintName("FK_EventUsers_Events")
+            .OnDelete(DeleteBehavior.Cascade);
 
         builder.HasOne<User>()
-               .WithMany()
-               .HasForeignKey(ep => ep.UserID);
+            .WithMany()
+            .HasForeignKey(eu => eu.UserID)
+            .HasConstraintName("FK_EventUsers_Users")
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

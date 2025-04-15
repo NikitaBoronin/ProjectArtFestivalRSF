@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ArtFestival.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class _12 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -50,25 +50,19 @@ namespace ArtFestival.Migrations
                 {
                     EventID = table.Column<int>(type: "integer", nullable: false),
                     UserID = table.Column<int>(type: "integer", nullable: false),
-                    EventID1 = table.Column<int>(type: "integer", nullable: true),
                     UserID1 = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_EventUsers", x => new { x.EventID, x.UserID });
                     table.ForeignKey(
-                        name: "FK_EventUsers_Events_EventID",
+                        name: "FK_EventUsers_Events",
                         column: x => x.EventID,
                         principalTable: "Events",
                         principalColumn: "EventID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_EventUsers_Events_EventID1",
-                        column: x => x.EventID1,
-                        principalTable: "Events",
-                        principalColumn: "EventID");
-                    table.ForeignKey(
-                        name: "FK_EventUsers_Users_UserID",
+                        name: "FK_EventUsers_Users",
                         column: x => x.UserID,
                         principalTable: "Users",
                         principalColumn: "UserID",
@@ -91,11 +85,6 @@ namespace ArtFestival.Migrations
                     { 4, "Айназ" },
                     { 5, "Никита" }
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_EventUsers_EventID1",
-                table: "EventUsers",
-                column: "EventID1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_EventUsers_UserID",

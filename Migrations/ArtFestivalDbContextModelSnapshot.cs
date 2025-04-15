@@ -105,15 +105,10 @@ namespace ArtFestival.Migrations
                     b.Property<int>("UserID")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("EventID1")
-                        .HasColumnType("integer");
-
                     b.Property<int?>("UserID1")
                         .HasColumnType("integer");
 
                     b.HasKey("EventID", "UserID");
-
-                    b.HasIndex("EventID1");
 
                     b.HasIndex("UserID");
 
@@ -125,20 +120,18 @@ namespace ArtFestival.Migrations
             modelBuilder.Entity("EventUser", b =>
                 {
                     b.HasOne("ArtFestival.Model.Event", null)
-                        .WithMany()
+                        .WithMany("Users")
                         .HasForeignKey("EventID")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ArtFestival.Model.Event", null)
-                        .WithMany("Users")
-                        .HasForeignKey("EventID1");
+                        .IsRequired()
+                        .HasConstraintName("FK_EventUsers_Events");
 
                     b.HasOne("ArtFestival.Model.User", null)
                         .WithMany()
                         .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("FK_EventUsers_Users");
 
                     b.HasOne("ArtFestival.Model.User", null)
                         .WithMany("Events")
