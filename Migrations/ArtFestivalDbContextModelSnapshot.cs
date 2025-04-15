@@ -41,8 +41,8 @@ namespace ArtFestival.Migrations
                     b.Property<DateTime>("EventDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("ImagePath")
-                        .HasColumnType("text");
+                    b.Property<byte[]>("ImageData")
+                        .HasColumnType("bytea");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -114,21 +114,17 @@ namespace ArtFestival.Migrations
 
             modelBuilder.Entity("EventUser", b =>
                 {
-                    b.HasOne("ArtFestival.Model.Event", "Event")
+                    b.HasOne("ArtFestival.Model.Event", null)
                         .WithMany("Users")
                         .HasForeignKey("EventID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ArtFestival.Model.User", "User")
+                    b.HasOne("ArtFestival.Model.User", null)
                         .WithMany("Events")
                         .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Event");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ArtFestival.Model.Event", b =>

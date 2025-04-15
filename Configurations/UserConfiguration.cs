@@ -10,9 +10,6 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.HasKey(u => u.UserID);
         builder.Property(u => u.UserID)
             .ValueGeneratedOnAdd();
-        builder.HasMany(u => u.Events)
-            .WithOne(ue => ue.User)
-            .HasForeignKey(ue => ue.UserID);
         builder.HasData(
         new User { UserID = 1, Name = "Алмаз" },
         new User { UserID = 2, Name = "Олег" },

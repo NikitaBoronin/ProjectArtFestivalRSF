@@ -9,9 +9,6 @@ public class EventConfiguration : IEntityTypeConfiguration<Event>
         builder.HasKey(e => e.EventID);
         builder.Property(e => e.EventID)
             .ValueGeneratedOnAdd();
-        builder.HasMany(e => e.Users)
-            .WithOne(ue => ue.Event)
-            .HasForeignKey(ue => ue.EventID);
         builder.Property(e => e.EventDate)
                .HasColumnType("timestamp with time zone");
     }
