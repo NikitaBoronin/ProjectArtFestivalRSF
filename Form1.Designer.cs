@@ -21,6 +21,8 @@
             btnDelete = new Button();
             tabPageEdit = new TabPage();
             groupBoxEdit = new GroupBox();
+            textBoxForEdit = new TextBox();
+            label3 = new Label();
             pictureBoxEditImage = new PictureBox();
             label1 = new Label();
             labelEditCategoryy = new Label();
@@ -65,8 +67,6 @@
             labelEventUsers = new Label();
             labelEventCategory = new Label();
             tabControlMain = new TabControl();
-            label3 = new Label();
-            textBoxForEdit = new TextBox();
             tabPageDelete.SuspendLayout();
             groupBoxDelete.SuspendLayout();
             tabPageEdit.SuspendLayout();
@@ -153,6 +153,23 @@
             groupBoxEdit.TabIndex = 0;
             groupBoxEdit.TabStop = false;
             groupBoxEdit.Text = "Редактирование события";
+            // 
+            // textBoxForEdit
+            // 
+            textBoxForEdit.Location = new Point(102, 402);
+            textBoxForEdit.Multiline = true;
+            textBoxForEdit.Name = "textBoxForEdit";
+            textBoxForEdit.Size = new Size(208, 54);
+            textBoxForEdit.TabIndex = 13;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(10, 402);
+            label3.Name = "label3";
+            label3.Size = new Size(82, 20);
+            label3.TabIndex = 12;
+            label3.Text = "Описание:";
             // 
             // pictureBoxEditImage
             // 
@@ -351,6 +368,7 @@
             btnAddPicture.Size = new Size(150, 63);
             btnAddPicture.TabIndex = 5;
             btnAddPicture.Text = "Добавить картинку";
+            btnAddPicture.Click += btnAddPicture_Click;
             // 
             // btnAddEvent
             // 
@@ -579,23 +597,6 @@
             tabControlMain.SelectedIndex = 0;
             tabControlMain.Size = new Size(875, 592);
             tabControlMain.TabIndex = 0;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(10, 402);
-            label3.Name = "label3";
-            label3.Size = new Size(82, 20);
-            label3.TabIndex = 12;
-            label3.Text = "Описание:";
-            // 
-            // textBoxForEdit
-            // 
-            textBoxForEdit.Location = new Point(102, 402);
-            textBoxForEdit.Multiline = true;
-            textBoxForEdit.Name = "textBoxForEdit";
-            textBoxForEdit.Size = new Size(208, 54);
-            textBoxForEdit.TabIndex = 13;
             // 
             // Form1
             // 

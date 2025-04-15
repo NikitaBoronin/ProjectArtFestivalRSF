@@ -112,6 +112,7 @@ namespace ArtFestival
             }
         }
 
+
         private byte[]? UploadImage()
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
@@ -242,17 +243,6 @@ namespace ArtFestival
         }
 
 
-
-        private void tabControlMain_BindingContextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cmbAddCategory_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnAddPicture_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
@@ -265,8 +255,6 @@ namespace ArtFestival
                 }
             }
         }
-
-
     }
 
 }
