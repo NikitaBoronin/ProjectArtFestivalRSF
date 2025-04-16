@@ -28,7 +28,8 @@ namespace ArtFestival
 
                 cmbAddCategory.DataSource = categories;
                 cmbEditCategory.DataSource = categories;
-                cmbMainFilterCategory.DataSource = new List<string> { "Все категории" }.Concat(categories).ToList();
+                cmbMainFilterCategory.DataSource = new List<string>
+                { "Все категории" }.Concat(categories).ToList();
 
                 var users = _db.Users.ToList();
                 clbAddParticipants.DataSource = users;
@@ -86,7 +87,8 @@ namespace ArtFestival
                     newEvent.Users.Add(new EventUser { UserID = user.UserID });
                 }
 
-                if (_db.Events.Any(ev => ev.Title == newEvent.Title && ev.EventDate.Date == newEvent.EventDate.Date))
+                if (_db.Events.Any(ev => ev.Title == newEvent.Title &&
+                ev.EventDate.Date == newEvent.EventDate.Date))
                 {
                     MessageBox.Show("Такое событие уже есть!");
                     return;
@@ -108,7 +110,8 @@ namespace ArtFestival
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка: {ex.Message}\n\nДетали:\n{ex.InnerException?.Message}");
+                MessageBox.Show($"Ошибка: {ex.Message}\n\nДетали:" +
+                    $"\n{ex.InnerException?.Message}");
             }
         }
 
@@ -147,7 +150,8 @@ namespace ArtFestival
                 lbMainEvents.SelectedIndexChanged += (s, e) =>
                 {
                     if (lbMainEvents.SelectedItem is Event ev)
-                        DisplayEventDetails(ev, picEventImage, labelEventName, labelEventDescription, labelEventTime, labelEventCategory, labelEventUsers);
+                        DisplayEventDetails(ev, picEventImage, labelEventName,
+                       labelEventDescription, labelEventTime, labelEventCategory, labelEventUsers);
                 };
 
                 // Редактирование
@@ -163,7 +167,8 @@ namespace ArtFestival
                         for (int i = 0; i < clbEditParticipants.Items.Count; i++)
                         {
                             var user = clbEditParticipants.Items[i] as User;
-                            clbEditParticipants.SetItemChecked(i, ev.Users.Any(u => u.UserID == user.UserID));
+                            clbEditParticipants.SetItemChecked(i, ev.Users
+                                .Any(u => u.UserID == user.UserID));
                         }
 
                         if (ev.ImageData != null)
@@ -190,7 +195,8 @@ namespace ArtFestival
             }
         }
 
-        private void DisplayEventDetails(Event ev, PictureBox pictureBox, Label name, Label desc, Label date, Label category, Label users)
+        private void DisplayEventDetails(Event ev, PictureBox pictureBox,
+            Label name, Label desc, Label date, Label category, Label users)
         {
             name.Text = $"Название события: {ev.Title}";
             desc.Text = $"Описание: {ev.Description}";
@@ -225,7 +231,8 @@ namespace ArtFestival
                 labelEventTime.Text = selectedEvent.EventDate.ToString("dd.MM.yyyy");
                 labelEventCategory.Text = selectedEvent.Category;
                 var userIds = selectedEvent.Users.Select(u => u.UserID).ToList();
-                var userNames = _db.Users.Where(u => userIds.Contains(u.UserID)).Select(u => u.Name).ToList();
+                var userNames = _db.Users.Where(u => userIds
+                .Contains(u.UserID)).Select(u => u.Name).ToList();
                 labelEventUsers.Text = string.Join(", ", userNames);
 
                 if (selectedEvent.ImageData != null)
@@ -255,6 +262,120 @@ namespace ArtFestival
                 }
             }
         }
+        private void btnEditImage_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Filter = "Изображения|*.jpg;*.png";
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    pictureBoxEditImage.Image = Image.FromFile(ofd.FileName);
+                    pictureBoxEditImage.Tag = ofd.FileName; // Сохраняем путь к новому изображению
+                }
+            }
+        }
+        private void btnSaveChanges_Click(object sender, EventArgs e)
+        {
+            if (lbEditEvents.SelectedItem is not Event selectedEvent)
+            {
+                MessageBox.Show("Выберите событие для редактирования.");
+                return;
+            }
+
+            try
+            {
+                selectedEvent.Title = txtEditTitle.Text;
+                selectedEvent.Description = textBoxForEdit.Text;
+                selectedEvent.EventDate = dtpEditDate.Value.ToUniversalTime();
+                selectedEvent.Category = cmbEditCategory.SelectedItem?.ToString();
+
+                // Обновление участников
+                selectedEvent.Users.Clear();
+                foreach (var user in clbEditParticipants.CheckedItems.Cast<User>())
+                {
+                    selectedEvent.Users.Add(new EventUser { UserID = user.UserID });
+                }
+
+                // Обновление изображения (если было выбрано новое)
+                if (pictureBoxEditImage.Tag is string imagePath && File.Exists(imagePath))
+                {
+                    selectedEvent.ImageData = File.ReadAllBytes(imagePath);
+                }
+
+                _db.SaveChanges();
+                LoadAllEvents();
+
+                MessageBox.Show("Событие успешно обновлено!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при сохранении изменений: {ex.Message}");
+            }
+        }
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (lbDeleteEvents.SelectedItem is not Event selectedEvent)
+            {
+                MessageBox.Show("Сначала выберите событие для удаления.");
+                return;
+            }
+            var confirmResult = MessageBox.Show(
+                $"Вы уверены, что хотите удалить событие \"{selectedEvent.Title}\"?",
+                "Подтверждение удаления",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+            if (confirmResult != DialogResult.Yes)
+                return;
+
+            try
+            {
+                _db.Events.Remove(selectedEvent);
+                _db.SaveChanges();
+                LoadAllEvents();
+
+                MessageBox.Show("Событие удалено успешно!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при удалении: {ex.Message}");
+            }
+        }
+        private void btnMainApplyFilter_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var selectedCategory = cmbMainFilterCategory.SelectedItem as string;
+                bool isDateFilterEnabled = dtpMainFilterDate.Checked;
+
+                // Получаем события как IQueryable, чтобы фильтрация выполнялась в базе
+                var query = _db.Events.AsQueryable();
+
+                // Фильтрация по категории, если выбрана
+                if (!string.IsNullOrEmpty(selectedCategory))
+                {
+                    query = query.Where(ev => ev.Category == selectedCategory);
+                }
+
+                // Фильтрация по дате, если галочка активна
+                if (isDateFilterEnabled)
+                {
+                    // Явно указываем Kind = Utc, чтобы избежать ошибки PostgreSQL
+                    DateTime selectedDate = DateTime.SpecifyKind(dtpMainFilterDate.Value.Date, DateTimeKind.Utc);
+
+                    query = query.Where(ev => ev.EventDate.Date == selectedDate);
+                }
+
+                // Применяем фильтрацию и загружаем результат
+                lbMainEvents.DataSource = query.ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка фильтрации: " + ex.Message);
+            }
+        }
+
+
+
     }
 
 }

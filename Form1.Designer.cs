@@ -67,6 +67,7 @@
             labelEventUsers = new Label();
             labelEventCategory = new Label();
             tabControlMain = new TabControl();
+            btnResetFilter = new Button();
             tabPageDelete.SuspendLayout();
             groupBoxDelete.SuspendLayout();
             tabPageEdit.SuspendLayout();
@@ -119,6 +120,7 @@
             btnDelete.Size = new Size(200, 30);
             btnDelete.TabIndex = 1;
             btnDelete.Text = "Удалить выбранное событие";
+            btnDelete.Click += btnDelete_Click;
             // 
             // tabPageEdit
             // 
@@ -180,7 +182,6 @@
             pictureBoxEditImage.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxEditImage.TabIndex = 11;
             pictureBoxEditImage.TabStop = false;
-
             // 
             // label1
             // 
@@ -270,6 +271,7 @@
             btnEditImage.Size = new Size(433, 30);
             btnEditImage.TabIndex = 5;
             btnEditImage.Text = "Редактировать изображение";
+            btnEditImage.Click += btnEditImage_Click;
             // 
             // btnSaveChanges
             // 
@@ -278,6 +280,7 @@
             btnSaveChanges.Size = new Size(300, 30);
             btnSaveChanges.TabIndex = 6;
             btnSaveChanges.Text = "Сохранить изменения";
+            btnSaveChanges.Click += btnSaveChanges_Click;
             // 
             // tabPageAdd
             // 
@@ -452,6 +455,7 @@
             // groupBoxView
             // 
             groupBoxView.BackColor = Color.White;
+            groupBoxView.Controls.Add(btnResetFilter);
             groupBoxView.Controls.Add(button1);
             groupBoxView.Controls.Add(label2);
             groupBoxView.Controls.Add(dtpMainFilterDate);
@@ -509,6 +513,7 @@
             btnMainApplyFilter.Size = new Size(200, 30);
             btnMainApplyFilter.TabIndex = 2;
             btnMainApplyFilter.Text = "Применить фильтр";
+            btnMainApplyFilter.Click += btnMainApplyFilter_Click;
             // 
             // lbMainEvents
             // 
@@ -601,7 +606,14 @@
             tabControlMain.SelectedIndex = 0;
             tabControlMain.Size = new Size(875, 592);
             tabControlMain.TabIndex = 0;
-
+            // 
+            // btnResetFilter
+            // 
+            btnResetFilter.Location = new Point(240, 58);
+            btnResetFilter.Name = "btnResetFilter";
+            btnResetFilter.Size = new Size(200, 30);
+            btnResetFilter.TabIndex = 6;
+            btnResetFilter.Text = "Сброс фильтрации";
             // 
             // Form1
             // 
@@ -684,5 +696,6 @@
         private TabControl tabControlMain;
         private TextBox textBoxForEdit;
         private Label label3;
+        private Button btnResetFilter;
     }
 }
