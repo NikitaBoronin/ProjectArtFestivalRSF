@@ -11,6 +11,10 @@ namespace ArtFestival
         {
             _db = new ArtFestivalDbContext();
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
+            this.MinimumSize = new Size(1024, 768);
+            this.AutoScaleMode = AutoScaleMode.Dpi;
+            this.Font = new Font("Segoe UI", 9F);
             Initialize();
         }
         private void Initialize()
@@ -462,9 +466,15 @@ namespace ArtFestival
             }
         }
 
+        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
+        {
 
+        }
 
+        private void groupBoxAdd_Enter(object sender, EventArgs e)
+        {
 
+        }
     }
 
 }
