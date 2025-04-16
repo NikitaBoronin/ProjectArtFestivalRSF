@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ArtFestival.Migrations
 {
     [DbContext(typeof(ArtFestivalDbContext))]
-    [Migration("20250415194314_12")]
-    partial class _12
+    [Migration("20250416163401_12312312")]
+    partial class _12312312
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,7 @@ namespace ArtFestival.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("ArtFestival.Model.Event", b =>
+            modelBuilder.Entity("Event", b =>
                 {
                     b.Property<int>("EventID")
                         .ValueGeneratedOnAdd()
@@ -56,7 +56,22 @@ namespace ArtFestival.Migrations
                     b.ToTable("Events");
                 });
 
-            modelBuilder.Entity("ArtFestival.Model.User", b =>
+            modelBuilder.Entity("EventUser", b =>
+                {
+                    b.Property<int>("EventID")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UserID")
+                        .HasColumnType("integer");
+
+                    b.HasKey("EventID", "UserID");
+
+                    b.HasIndex("UserID");
+
+                    b.ToTable("EventUsers");
+                });
+
+            modelBuilder.Entity("User", b =>
                 {
                     b.Property<int>("UserID")
                         .ValueGeneratedOnAdd()
@@ -102,51 +117,31 @@ namespace ArtFestival.Migrations
 
             modelBuilder.Entity("EventUser", b =>
                 {
-                    b.Property<int>("EventID")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("UserID")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("UserID1")
-                        .HasColumnType("integer");
-
-                    b.HasKey("EventID", "UserID");
-
-                    b.HasIndex("UserID");
-
-                    b.HasIndex("UserID1");
-
-                    b.ToTable("EventUsers");
-                });
-
-            modelBuilder.Entity("EventUser", b =>
-                {
-                    b.HasOne("ArtFestival.Model.Event", null)
+                    b.HasOne("Event", "Event")
                         .WithMany("Users")
                         .HasForeignKey("EventID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK_EventUsers_Events");
 
-                    b.HasOne("ArtFestival.Model.User", null)
-                        .WithMany()
+                    b.HasOne("User", "User")
+                        .WithMany("Events")
                         .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK_EventUsers_Users");
 
-                    b.HasOne("ArtFestival.Model.User", null)
-                        .WithMany("Events")
-                        .HasForeignKey("UserID1");
+                    b.Navigation("Event");
+
+                    b.Navigation("User");
                 });
 
-            modelBuilder.Entity("ArtFestival.Model.Event", b =>
+            modelBuilder.Entity("Event", b =>
                 {
                     b.Navigation("Users");
                 });
 
-            modelBuilder.Entity("ArtFestival.Model.User", b =>
+            modelBuilder.Entity("User", b =>
                 {
                     b.Navigation("Events");
                 });

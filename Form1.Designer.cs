@@ -177,8 +177,10 @@
             pictureBoxEditImage.Location = new Point(371, 57);
             pictureBoxEditImage.Name = "pictureBoxEditImage";
             pictureBoxEditImage.Size = new Size(472, 334);
+            pictureBoxEditImage.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxEditImage.TabIndex = 11;
             pictureBoxEditImage.TabStop = false;
+
             // 
             // label1
             // 
@@ -317,6 +319,7 @@
             pictureBoxForAdd.Location = new Point(302, 61);
             pictureBoxForAdd.Name = "pictureBoxForAdd";
             pictureBoxForAdd.Size = new Size(541, 387);
+            pictureBoxForAdd.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxForAdd.TabIndex = 16;
             pictureBoxForAdd.TabStop = false;
             // 
@@ -537,6 +540,7 @@
             picEventImage.Location = new Point(20, 30);
             picEventImage.Name = "picEventImage";
             picEventImage.Size = new Size(310, 160);
+            picEventImage.SizeMode = PictureBoxSizeMode.Zoom;
             picEventImage.TabIndex = 0;
             picEventImage.TabStop = false;
             // 
@@ -597,6 +601,7 @@
             tabControlMain.SelectedIndex = 0;
             tabControlMain.Size = new Size(875, 592);
             tabControlMain.TabIndex = 0;
+
             // 
             // Form1
             // 

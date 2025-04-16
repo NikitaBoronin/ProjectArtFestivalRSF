@@ -1,7 +1,6 @@
-﻿using ArtFestival.Model;
+﻿
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-
 namespace ArtFestival
 {
     public class ArtFestivalDbContext : DbContext

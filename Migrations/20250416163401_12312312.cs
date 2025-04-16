@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ArtFestival.Migrations
 {
     /// <inheritdoc />
-    public partial class _12 : Migration
+    public partial class _12312312 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -49,8 +49,7 @@ namespace ArtFestival.Migrations
                 columns: table => new
                 {
                     EventID = table.Column<int>(type: "integer", nullable: false),
-                    UserID = table.Column<int>(type: "integer", nullable: false),
-                    UserID1 = table.Column<int>(type: "integer", nullable: true)
+                    UserID = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -67,11 +66,6 @@ namespace ArtFestival.Migrations
                         principalTable: "Users",
                         principalColumn: "UserID",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_EventUsers_Users_UserID1",
-                        column: x => x.UserID1,
-                        principalTable: "Users",
-                        principalColumn: "UserID");
                 });
 
             migrationBuilder.InsertData(
@@ -90,11 +84,6 @@ namespace ArtFestival.Migrations
                 name: "IX_EventUsers_UserID",
                 table: "EventUsers",
                 column: "UserID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_EventUsers_UserID1",
-                table: "EventUsers",
-                column: "UserID1");
         }
 
         /// <inheritdoc />

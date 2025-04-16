@@ -1,4 +1,4 @@
-using ArtFestival.Model;
+
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
 namespace ArtFestival

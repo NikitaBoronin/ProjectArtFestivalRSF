@@ -1,6 +1,5 @@
-﻿using ArtFestival.Model;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 public class EventConfiguration : IEntityTypeConfiguration<Event>
 {
@@ -12,11 +11,5 @@ public class EventConfiguration : IEntityTypeConfiguration<Event>
 
         builder.Property(e => e.EventDate)
             .HasColumnType("timestamp with time zone");
-
-        // Настройка связи с EventUser
-        builder.HasMany(e => e.Users)
-            .WithOne()
-            .HasForeignKey(eu => eu.EventID)
-            .OnDelete(DeleteBehavior.Cascade);
     }
 }
