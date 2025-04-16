@@ -1,4 +1,5 @@
 
+using ClosedXML.Excel;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
 namespace ArtFestival
@@ -373,6 +374,94 @@ namespace ArtFestival
                 MessageBox.Show("Ошибка фильтрации: " + ex.Message);
             }
         }
+        private void btnResetFilter_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                cmbMainFilterCategory.SelectedIndex = 0;
+                dtpMainFilterDate.Checked = false;
+                var events = _db.Events
+                    .Include(e => e.Users)
+                    .OrderByDescending(e => e.EventDate)
+                    .ToList();
+
+                lbMainEvents.DataSource = new BindingList<Event>(events);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при сбросе фильтров: {ex.Message}");
+            }
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // 1. Получаем ВСЕ события без фильтров
+                var allEvents = _db.Events
+                    .Include(ev => ev.Users)
+                    .OrderBy(ev => ev.EventDate)
+                    .ToList();
+
+                // 2. Создаем Excel-документ
+                using var workbook = new ClosedXML.Excel.XLWorkbook();
+                var worksheet = workbook.Worksheets.Add("Все события");
+
+                // 3. Формируем заголовки
+                int row = 1;
+                worksheet.Cell(row, 1).Value = "Название";
+                worksheet.Cell(row, 2).Value = "Дата";
+                worksheet.Cell(row, 3).Value = "Описание";
+                worksheet.Cell(row, 4).Value = "Категория";
+                worksheet.Cell(row, 5).Value = "Участники";
+
+                // Стиль для заголовков
+                var headerRange = worksheet.Range(1, 1, 1, 5);
+                headerRange.Style.Font.Bold = true;
+                headerRange.Style.Fill.BackgroundColor = XLColor.LightGray;
+
+                row++;
+
+                // 4. Заполняем данными
+                foreach (var ev in allEvents)
+                {
+                    worksheet.Cell(row, 1).Value = ev.Title;
+                    worksheet.Cell(row, 2).Value = ev.EventDate.ToString("dd.MM.yyyy HH:mm");
+                    worksheet.Cell(row, 3).Value = ev.Description;
+                    worksheet.Cell(row, 4).Value = ev.Category;
+
+                    // Получаем имена участников
+                    var userNames = ev.Users
+                        .Select(u => u.User?.Name ?? "Неизвестный участник")
+                        .ToList();
+
+                    worksheet.Cell(row, 5).Value = string.Join(", ", userNames);
+                    row++;
+                }
+
+                // 5. Настраиваем внешний вид
+                worksheet.Columns().AdjustToContents(); // Автоподбор ширины
+
+                // 6. Сохраняем файл
+                using SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "Excel файлы|*.xlsx";
+                sfd.FileName = "Все_события_ArtFestival.xlsx";
+
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    workbook.SaveAs(sfd.FileName);
+                    MessageBox.Show("Отчёт со всеми событиями успешно сохранён!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка при создании отчёта: " + ex.Message,
+                                "Ошибка",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+            }
+        }
+
 
 
 

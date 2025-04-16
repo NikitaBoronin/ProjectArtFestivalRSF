@@ -53,6 +53,7 @@
             labelAddParticipantss = new Label();
             tabPageMain = new TabPage();
             groupBoxView = new GroupBox();
+            btn = new Button();
             button1 = new Button();
             label2 = new Label();
             dtpMainFilterDate = new DateTimePicker();
@@ -67,7 +68,6 @@
             labelEventUsers = new Label();
             labelEventCategory = new Label();
             tabControlMain = new TabControl();
-            btnResetFilter = new Button();
             tabPageDelete.SuspendLayout();
             groupBoxDelete.SuspendLayout();
             tabPageEdit.SuspendLayout();
@@ -455,7 +455,7 @@
             // groupBoxView
             // 
             groupBoxView.BackColor = Color.White;
-            groupBoxView.Controls.Add(btnResetFilter);
+            groupBoxView.Controls.Add(btn);
             groupBoxView.Controls.Add(button1);
             groupBoxView.Controls.Add(label2);
             groupBoxView.Controls.Add(dtpMainFilterDate);
@@ -469,6 +469,15 @@
             groupBoxView.TabStop = false;
             groupBoxView.Text = "События и фильтрация";
             // 
+            // btn
+            // 
+            btn.Location = new Point(240, 58);
+            btn.Name = "btn";
+            btn.Size = new Size(200, 30);
+            btn.TabIndex = 6;
+            btn.Text = "Сброс фильтрации";
+            btn.Click += btnResetFilter_Click;
+            // 
             // button1
             // 
             button1.Location = new Point(23, 478);
@@ -477,6 +486,7 @@
             button1.TabIndex = 5;
             button1.Text = "Сформировать Excel отчет";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // label2
             // 
@@ -607,14 +617,6 @@
             tabControlMain.Size = new Size(875, 592);
             tabControlMain.TabIndex = 0;
             // 
-            // btnResetFilter
-            // 
-            btnResetFilter.Location = new Point(240, 58);
-            btnResetFilter.Name = "btnResetFilter";
-            btnResetFilter.Size = new Size(200, 30);
-            btnResetFilter.TabIndex = 6;
-            btnResetFilter.Text = "Сброс фильтрации";
-            // 
             // Form1
             // 
             BackColor = Color.White;
@@ -697,5 +699,6 @@
         private TextBox textBoxForEdit;
         private Label label3;
         private Button btnResetFilter;
+        private Button btn;
     }
 }
