@@ -644,7 +644,6 @@
             labelEventCategory.Size = new Size(310, 69);
             labelEventCategory.TabIndex = 5;
             labelEventCategory.Text = "Категория:";
-            labelEventCategory.Click += labelEventCategory_Click;
             // 
             // tabControlMain
             // 

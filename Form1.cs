@@ -394,7 +394,7 @@ namespace ArtFestival
                 var query = _db.Events.AsQueryable();
 
                 // Фильтрация по категории, если выбрана
-                if (!string.IsNullOrEmpty(selectedCategory))
+                if (!string.IsNullOrEmpty(selectedCategory) && selectedCategory != "Все категории")
                 {
                     query = query.Where(ev => ev.Category == selectedCategory);
                 }
@@ -403,20 +403,23 @@ namespace ArtFestival
                 if (isDateFilterEnabled)
                 {
                     // Явно указываем Kind = Utc, чтобы избежать ошибки PostgreSQL
-                    DateTime selectedDate = DateTime.SpecifyKind(dtpMainFilterDate.
-                        Value.Date, DateTimeKind.Utc);
-
+                    DateTime selectedDate = DateTime.SpecifyKind(dtpMainFilterDate.Value.Date, DateTimeKind.Utc);
                     query = query.Where(ev => ev.EventDate.Date == selectedDate);
                 }
 
                 // Применяем фильтрацию и загружаем результат
-                lbMainEvents.DataSource = query.ToList();
+                var filteredEvents = query.OrderByDescending(e => e.EventDate).ToList();
+                lbMainEvents.DataSource = new BindingList<Event>(filteredEvents);
+
+                // Очищаем детали события
+                ClearEventDetails();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Ошибка фильтрации: " + ex.Message);
             }
         }
+
         private void btnResetFilter_Click(object sender, EventArgs e)
         {
             try
@@ -430,11 +433,24 @@ namespace ArtFestival
 
                 lbMainEvents.DataSource = new BindingList<Event>(events);
 
+                // Очищаем детали события
+                ClearEventDetails();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Ошибка при сбросе фильтров: {ex.Message}");
             }
+        }
+
+        // Новый метод для очистки деталей события
+        private void ClearEventDetails()
+        {
+            labelEventName.Text = "Название события:";
+            labelEventDescription.Text = "Описание:";
+            labelEventTime.Text = "Дата:";
+            labelEventCategory.Text = "Категория:";
+            labelEventUsers.Text = "Участники:";
+            picEventImage.Image = null;
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -503,11 +519,6 @@ namespace ArtFestival
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
             }
-        }
-
-        private void labelEventCategory_Click(object sender, EventArgs e)
-        {
-
         }
     }
 
