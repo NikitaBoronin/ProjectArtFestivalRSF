@@ -355,7 +355,7 @@ namespace ArtFestival
                 }
                 selectedEvent.Title = txtEditTitle.Text;
                 selectedEvent.Description = textBoxForEdit.Text;
-                selectedEvent.EventDate = dtpEditDate.Value.ToUniversalTime();
+                selectedEvent.EventDate = dtpEditDate.Value.ToUniversalTime().AddHours(3);
                 selectedEvent.Category = cmbEditCategory.SelectedItem.ToString();
 
                 selectedEvent.Users.Clear();
@@ -492,38 +492,26 @@ namespace ArtFestival
         {
             try
             {
-                // 1. Получаем текущие фильтры
                 string categoryFilter = cmbMainFilterCategory.SelectedItem?.ToString() ?? "Все категории";
                 string dateFilter = dtpMainFilterDate.Checked
                     ? dtpMainFilterDate.Value.ToString("dd.MM.yyyy")
                     : "Не задана";
-
-                // 2. Получаем отфильтрованные события (те же, что отображаются в списке)
                 var events = ((BindingList<Event>)lbMainEvents.DataSource).ToList();
-
-                // 3. Создаем Excel-документ
                 using var workbook = new XLWorkbook();
                 var worksheet = workbook.Worksheets.Add("События ArtFestival");
-
-                // 4. Добавляем информацию о фильтрах
                 int row = 1;
                 worksheet.Cell(row, 1).Value = "Отчет о событиях ArtFestival";
                 worksheet.Cell(row, 1).Style.Font.Bold = true;
                 worksheet.Cell(row++, 1).Style.Font.FontSize = 16;
-
                 worksheet.Cell(row, 1).Value = "Примененные фильтры:";
                 worksheet.Cell(row++, 1).Style.Font.Bold = true;
-
                 worksheet.Cell(row, 1).Value = "Категория:";
                 worksheet.Cell(row, 2).Value = categoryFilter;
                 row++;
-
                 worksheet.Cell(row, 1).Value = "Дата:";
                 worksheet.Cell(row, 2).Value = dateFilter;
                 row++;
-
                 row++; // Пустая строка
-
                 // 5. Формируем заголовки таблицы
                 worksheet.Cell(row, 1).Value = "Название";
                 worksheet.Cell(row, 2).Value = "Дата";
@@ -553,7 +541,19 @@ namespace ArtFestival
                         .ToList() ?? new List<string>();
 
                     worksheet.Cell(row, 5).Value = string.Join(", ", userNames);
-                    worksheet.Cell(row, 6).Value = userNames.Count;
+                    if (ev.ImageData != null)
+                    {
+                        using (var ms = new MemoryStream(ev.ImageData))
+                        using (var img = Image.FromStream(ms))
+                        {
+                            var tempPath = Path.Combine(Path.GetTempPath(), $"image_{Guid.NewGuid()}.png");
+                            img.Save(tempPath);
+
+                            var picture = worksheet.AddPicture(tempPath)
+                                .MoveTo(worksheet.Cell(row, 6))
+                                .WithSize(100, 100);
+                        }
+                    }
                     row++;
                 }
 
