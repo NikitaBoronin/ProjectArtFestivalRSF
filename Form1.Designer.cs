@@ -335,7 +335,6 @@
             groupBoxAdd.TabIndex = 0;
             groupBoxAdd.TabStop = false;
             groupBoxAdd.Text = "Добавление события";
-
             // 
             // pictureBoxForAdd
             // 
@@ -346,7 +345,6 @@
             pictureBoxForAdd.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxForAdd.TabIndex = 16;
             pictureBoxForAdd.TabStop = false;
-
             // 
             // txtAddTitle
             // 
@@ -411,7 +409,7 @@
             // 
             // labelimageTitle
             // 
-            labelimageTitle.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            labelimageTitle.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             labelimageTitle.AutoSize = true;
             labelimageTitle.Font = new Font("Microsoft Sans Serif", 10.2F);
             labelimageTitle.Location = new Point(400, 19);
@@ -534,7 +532,7 @@
             dtpMainFilterDate.Format = DateTimePickerFormat.Custom;
             dtpMainFilterDate.Location = new Point(16, 21);
             dtpMainFilterDate.Name = "dtpMainFilterDate";
-            dtpMainFilterDate.Size = new Size(234, 27);
+            dtpMainFilterDate.Size = new Size(222, 27);
             dtpMainFilterDate.TabIndex = 0;
             // 
             // cmbMainFilterCategory
@@ -543,7 +541,7 @@
             cmbMainFilterCategory.FormattingEnabled = true;
             cmbMainFilterCategory.Location = new Point(18, 58);
             cmbMainFilterCategory.Name = "cmbMainFilterCategory";
-            cmbMainFilterCategory.Size = new Size(234, 28);
+            cmbMainFilterCategory.Size = new Size(220, 28);
             cmbMainFilterCategory.TabIndex = 1;
             // 
             // btnMainApplyFilter
@@ -569,10 +567,6 @@
             // 
             splitContainer1.Location = new Point(161, 214);
             splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-
             splitContainer1.Size = new Size(150, 100);
             splitContainer1.SplitterDistance = 69;
             splitContainer1.TabIndex = 0;
@@ -608,52 +602,49 @@
             // labelEventName
             // 
             labelEventName.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            labelEventName.Location = new Point(17, 212);
-            labelEventName.MaximumSize = new Size(200, 1000);
+            labelEventName.Location = new Point(20, 214);
+            labelEventName.MinimumSize = new Size(0, 20);
             labelEventName.Name = "labelEventName";
-            labelEventName.Size = new Size(143, 20);
+            labelEventName.Size = new Size(310, 40);
             labelEventName.TabIndex = 1;
             labelEventName.Text = "Название события:";
             // 
             // labelEventDescription
             // 
             labelEventDescription.Anchor = AnchorStyles.Top;
-            labelEventDescription.AutoSize = true;
-            labelEventDescription.Location = new Point(17, 248);
+            labelEventDescription.Location = new Point(20, 255);
             labelEventDescription.Name = "labelEventDescription";
-            labelEventDescription.Size = new Size(82, 20);
+            labelEventDescription.Size = new Size(313, 60);
             labelEventDescription.TabIndex = 2;
             labelEventDescription.Text = "Описание:";
             // 
             // labelEventTime
             // 
             labelEventTime.Anchor = AnchorStyles.Top;
-            labelEventTime.AutoSize = true;
-            labelEventTime.Location = new Point(17, 311);
+            labelEventTime.Location = new Point(20, 315);
             labelEventTime.Name = "labelEventTime";
-            labelEventTime.Size = new Size(146, 20);
+            labelEventTime.Size = new Size(310, 20);
             labelEventTime.TabIndex = 3;
             labelEventTime.Text = "Время проведения:";
             // 
             // labelEventUsers
             // 
             labelEventUsers.Anchor = AnchorStyles.Top;
-            labelEventUsers.AutoSize = true;
-            labelEventUsers.Location = new Point(17, 349);
+            labelEventUsers.Location = new Point(17, 357);
             labelEventUsers.Name = "labelEventUsers";
-            labelEventUsers.Size = new Size(84, 20);
+            labelEventUsers.Size = new Size(300, 100);
             labelEventUsers.TabIndex = 4;
             labelEventUsers.Text = "Участники:";
             // 
             // labelEventCategory
             // 
             labelEventCategory.Anchor = AnchorStyles.Top;
-            labelEventCategory.AutoSize = true;
-            labelEventCategory.Location = new Point(19, 444);
+            labelEventCategory.Location = new Point(20, 457);
             labelEventCategory.Name = "labelEventCategory";
-            labelEventCategory.Size = new Size(84, 20);
+            labelEventCategory.Size = new Size(310, 69);
             labelEventCategory.TabIndex = 5;
             labelEventCategory.Text = "Категория:";
+            labelEventCategory.Click += labelEventCategory_Click;
             // 
             // tabControlMain
             // 
@@ -669,7 +660,6 @@
             tabControlMain.SelectedIndex = 0;
             tabControlMain.Size = new Size(875, 592);
             tabControlMain.TabIndex = 0;
-
             // 
             // Form1
             // 
@@ -696,7 +686,6 @@
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
             groupBoxDetails.ResumeLayout(false);
-            groupBoxDetails.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picEventImage).EndInit();
             tabControlMain.ResumeLayout(false);
             ResumeLayout(false);

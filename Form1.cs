@@ -57,9 +57,19 @@ namespace ArtFestival
                     MessageBox.Show("Введите название события");
                     return;
                 }
+                if (txtAddTitle.Text.Length > 50)
+                {
+                    MessageBox.Show("Название события не должно превышать 50 символов.");
+                    return;
+                }
                 if (string.IsNullOrWhiteSpace(txtAddDescription.Text))
                 {
                     MessageBox.Show("Введите описание события");
+                    return;
+                }
+                if (txtAddDescription.Text.Length > 100)
+                {
+                    MessageBox.Show("Описание события не должно превышать 100 символов.");
                     return;
                 }
                 if (clbAddParticipants.CheckedItems.Count == 0)
@@ -72,9 +82,7 @@ namespace ArtFestival
                     MessageBox.Show("Сначала добавьте изображение");
                     return;
                 }
-
                 byte[] imageData = File.ReadAllBytes(pictureBoxForAdd.Tag.ToString());
-
                 var newEvent = new Event
                 {
                     EventDate = dtpAddDate.Value.ToUniversalTime(),
@@ -84,7 +92,6 @@ namespace ArtFestival
                     Users = new List<EventUser>(),
                     ImageData = imageData
                 };
-
                 foreach (var user in clbAddParticipants.CheckedItems.Cast<User>())
                 {
                     newEvent.Users.Add(new EventUser { UserID = user.UserID });
@@ -96,14 +103,10 @@ namespace ArtFestival
                     MessageBox.Show("Такое событие уже есть!");
                     return;
                 }
-
                 _db.Events.Add(newEvent);
                 _db.SaveChanges();
                 LoadAllEvents();
-
                 MessageBox.Show("Событие успешно создано!");
-
-                // Очистка
                 txtAddTitle.Clear();
                 txtAddDescription.Clear();
                 pictureBoxForAdd.Image = null;
@@ -261,7 +264,7 @@ namespace ArtFestival
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
                     pictureBoxForAdd.Image = Image.FromFile(ofd.FileName);
-                    pictureBoxForAdd.Tag = ofd.FileName; // сохраняем путь к файлу во временное хранилище
+                    pictureBoxForAdd.Tag = ofd.FileName;
                 }
             }
         }
@@ -292,10 +295,20 @@ namespace ArtFestival
                     MessageBox.Show("Введите название события.");
                     return;
                 }
+                if (txtEditTitle.Text.Length > 50)
+                {
+                    MessageBox.Show("Название события не должно превышать 50 символов.");
+                    return;
+                }
 
                 if (string.IsNullOrWhiteSpace(textBoxForEdit.Text))
                 {
                     MessageBox.Show("Введите описание события.");
+                    return;
+                }
+                if (textBoxForEdit.Text.Length > 100)
+                {
+                    MessageBox.Show("Описание события не должно превышать 100 символов.");
                     return;
                 }
 
@@ -490,6 +503,11 @@ namespace ArtFestival
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
             }
+        }
+
+        private void labelEventCategory_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
