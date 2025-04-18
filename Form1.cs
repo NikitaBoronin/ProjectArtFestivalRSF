@@ -1,5 +1,6 @@
 
 using ClosedXML.Excel;
+using ClosedXML.Excel.Drawings;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
 namespace ArtFestival
@@ -11,8 +12,7 @@ namespace ArtFestival
         {
             _db = new ArtFestivalDbContext();
             InitializeComponent();
-            this.AutoScaleMode = AutoScaleMode.Dpi;
-            this.Font = new Font("Segoe UI", 9F);
+
             Initialize();
         }
         private void Initialize()
@@ -22,12 +22,12 @@ namespace ArtFestival
                 _db = new ArtFestivalDbContext();
 
                 var categories = new List<string>
-        {
-            "Классическая живопись",
-            "Современное искусство",
-            "Театральное искусство",
-            "Скульптура и инсталляции"
-        };
+                {
+                "Классическая живопись",
+                "Современное искусство",
+                "Театральное искусство",
+                "Скульптура и инсталляции"
+                };
 
                 cmbAddCategory.DataSource = categories;
                 cmbEditCategory.DataSource = categories;
@@ -120,20 +120,6 @@ namespace ArtFestival
                     $"\n{ex.InnerException?.Message}");
             }
         }
-
-
-        private byte[]? UploadImage()
-        {
-            using (OpenFileDialog ofd = new OpenFileDialog())
-            {
-                ofd.Filter = "Изображения|*.jpg;*.png";
-                if (ofd.ShowDialog() == DialogResult.OK)
-                {
-                    return File.ReadAllBytes(ofd.FileName);
-                }
-            }
-            return null;
-        }
         private void LoadAllEvents()
         {
             try
@@ -142,25 +128,19 @@ namespace ArtFestival
                     .Include(e => e.Users)
                     .OrderByDescending(e => e.EventDate)
                     .ToList();
-
                 lbMainEvents.DataSource = new BindingList<Event>(events);
                 lbMainEvents.DisplayMember = "Title";
-
                 lbEditEvents.DataSource = new BindingList<Event>(events);
                 lbEditEvents.DisplayMember = "Title";
 
                 lbDeleteEvents.DataSource = new BindingList<Event>(events);
                 lbDeleteEvents.DisplayMember = "Title";
-
-                // Главная вкладка
                 lbMainEvents.SelectedIndexChanged += (s, e) =>
                 {
                     if (lbMainEvents.SelectedItem is Event ev)
                         DisplayEventDetails(ev, picEventImage, labelEventName,
                        labelEventDescription, labelEventTime, labelEventCategory, labelEventUsers);
                 };
-
-                // Редактирование
                 lbEditEvents.SelectedIndexChanged += (s, e) =>
                 {
                     if (lbEditEvents.SelectedItem is Event ev)
@@ -188,8 +168,6 @@ namespace ArtFestival
                         }
                     }
                 };
-
-                // Удаление
                 lbDeleteEvents.SelectedIndexChanged += (s, e) =>
                 {
 
@@ -331,8 +309,6 @@ namespace ArtFestival
                     return;
                 }
                 bool isChanged = false;
-
-                // Проверяем текстовые поля на изменения
                 if (selectedEvent.Title != txtEditTitle.Text)
                 {
                     selectedEvent.Title = txtEditTitle.Text;
@@ -415,10 +391,7 @@ namespace ArtFestival
                 string selectedCategory = cmbMainFilterCategory.SelectedItem?.ToString();
                 bool filterByCategory = !string.IsNullOrEmpty(selectedCategory) && selectedCategory != "Все категории";
                 bool filterByDate = dtpMainFilterDate.Checked;
-
                 var query = _db.Events.AsQueryable();
-
-                // Гибкая фильтрация (оба/один/без фильтров)
                 if (filterByCategory && filterByDate)
                 {
                     DateTime filterDate = DateTime.SpecifyKind(dtpMainFilterDate.Value.Date, DateTimeKind.Utc);
@@ -442,10 +415,6 @@ namespace ArtFestival
 
                 lbMainEvents.DataSource = new BindingList<Event>(filteredEvents);
                 ClearEventDetails();
-
-                // Визуальная индикация фильтров через существующие элементы
-                dtpMainFilterDate.ForeColor = filterByDate ? Color.Red : Color.Black;
-                cmbMainFilterCategory.ForeColor = filterByCategory ? Color.Red : Color.Black;
             }
             catch (Exception ex)
             {
@@ -455,30 +424,15 @@ namespace ArtFestival
 
         private void btnResetFilter_Click(object sender, EventArgs e)
         {
-            try
-            {
-                // Сбрасываем визуальные маркеры
-                dtpMainFilterDate.ForeColor = Color.Black;
-                cmbMainFilterCategory.ForeColor = Color.Black;
-                dtpMainFilterDate.Checked = false;
-                cmbMainFilterCategory.SelectedIndex = 0;
-
-                // Загружаем все события
-                var events = _db.Events
-                    .Include(e => e.Users)
-                    .OrderByDescending(e => e.EventDate)
-                    .ToList();
-
-                lbMainEvents.DataSource = new BindingList<Event>(events);
-                ClearEventDetails();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ошибка при сбросе фильтров: {ex.Message}");
-            }
+            dtpMainFilterDate.Checked = false;
+            cmbMainFilterCategory.SelectedIndex = 0;
+            var events = _db.Events
+               .Include(e => e.Users)
+               .OrderByDescending(e => e.EventDate)
+               .ToList();
+            lbMainEvents.DataSource = new BindingList<Event>(events);
+            ClearEventDetails();
         }
-
-        // Новый метод для очистки деталей события
         private void ClearEventDetails()
         {
             labelEventName.Text = "Название события:";
@@ -496,38 +450,49 @@ namespace ArtFestival
                 string dateFilter = dtpMainFilterDate.Checked
                     ? dtpMainFilterDate.Value.ToString("dd.MM.yyyy")
                     : "Не задана";
+
                 var events = ((BindingList<Event>)lbMainEvents.DataSource).ToList();
+
                 using var workbook = new XLWorkbook();
                 var worksheet = workbook.Worksheets.Add("События ArtFestival");
+
+                var headerStyle = workbook.Style;
+                headerStyle.Font.Bold = true;
+                headerStyle.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                headerStyle.Fill.BackgroundColor = XLColor.LightGray;
+
+                var titleStyle = workbook.Style;
+                titleStyle.Font.Bold = true;
+                titleStyle.Font.FontSize = 16;
+                titleStyle.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+
                 int row = 1;
                 worksheet.Cell(row, 1).Value = "Отчет о событиях ArtFestival";
-                worksheet.Cell(row, 1).Style.Font.Bold = true;
-                worksheet.Cell(row++, 1).Style.Font.FontSize = 16;
+                worksheet.Cell(row, 1).Style = titleStyle;
+                worksheet.Range(row, 1, row, 5).Merge();
+                row++;
+
                 worksheet.Cell(row, 1).Value = "Примененные фильтры:";
-                worksheet.Cell(row++, 1).Style.Font.Bold = true;
+                worksheet.Cell(row, 1).Style.Font.Bold = true;
+                row++;
+
                 worksheet.Cell(row, 1).Value = "Категория:";
                 worksheet.Cell(row, 2).Value = categoryFilter;
                 row++;
+
                 worksheet.Cell(row, 1).Value = "Дата:";
                 worksheet.Cell(row, 2).Value = dateFilter;
-                row++;
-                row++; // Пустая строка
-                // 5. Формируем заголовки таблицы
-                worksheet.Cell(row, 1).Value = "Название";
-                worksheet.Cell(row, 2).Value = "Дата";
-                worksheet.Cell(row, 3).Value = "Описание";
-                worksheet.Cell(row, 4).Value = "Категория";
-                worksheet.Cell(row, 5).Value = "Участники";
-                worksheet.Cell(row, 6).Value = "Кол-во участников";
+                row += 2;
 
-                // Стиль для заголовков
-                var headerRange = worksheet.Range(row, 1, row, 6);
-                headerRange.Style.Font.Bold = true;
-                headerRange.Style.Fill.BackgroundColor = XLColor.LightGray;
-                headerRange.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                string[] headers = { "Название", "Дата", "Описание", "Категория", "Участники" };
+                for (int i = 0; i < headers.Length; i++)
+                {
+                    worksheet.Cell(row, i + 1).Value = headers[i];
+                    worksheet.Cell(row, i + 1).Style = headerStyle;
+                }
+
                 row++;
 
-                // 6. Заполняем данными
                 foreach (var ev in events)
                 {
                     worksheet.Cell(row, 1).Value = ev.Title;
@@ -535,55 +500,42 @@ namespace ArtFestival
                     worksheet.Cell(row, 3).Value = ev.Description;
                     worksheet.Cell(row, 4).Value = ev.Category;
 
-                    // Получаем имена участников
                     var userNames = ev.Users?
                         .Select(u => u.User?.Name ?? "Неизвестный участник")
                         .ToList() ?? new List<string>();
 
                     worksheet.Cell(row, 5).Value = string.Join(", ", userNames);
-                    if (ev.ImageData != null)
-                    {
-                        using (var ms = new MemoryStream(ev.ImageData))
-                        using (var img = Image.FromStream(ms))
-                        {
-                            var tempPath = Path.Combine(Path.GetTempPath(), $"image_{Guid.NewGuid()}.png");
-                            img.Save(tempPath);
 
-                            var picture = worksheet.AddPicture(tempPath)
-                                .MoveTo(worksheet.Cell(row, 6))
-                                .WithSize(100, 100);
-                        }
-                    }
                     row++;
                 }
 
-                // 7. Настраиваем внешний вид
-                worksheet.Columns().AdjustToContents(); // Автоподбор ширины
-                worksheet.Range(1, 1, 1, 6).Merge(); // Объединяем ячейки для заголовка
+                worksheet.Columns().AdjustToContents();
 
-
-                // 9. Сохраняем файл
-                using SaveFileDialog sfd = new SaveFileDialog();
-                sfd.Filter = "Excel файлы|*.xlsx";
-                sfd.FileName = $"События_ArtFestival_{DateTime.Now:yyyyMMdd_HHmm}.xlsx";
+                using SaveFileDialog sfd = new SaveFileDialog
+                {
+                    Filter = "Excel файлы|*.xlsx",
+                    FileName = $"События_ArtFestival_{DateTime.Now:yyyyMMdd_HHmm}.xlsx"
+                };
 
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
                     workbook.SaveAs(sfd.FileName);
-                    MessageBox.Show($"Отчёт успешно сохранён!\n\nФайл: {Path.GetFileName(sfd.FileName)}",
-                                  "Отчёт создан",
-                                  MessageBoxButtons.OK,
-                                  MessageBoxIcon.Information);
+                    MessageBox.Show($"Отчёт успешно сохранён!\nФайл: {Path.GetFileName(sfd.FileName)}",
+                                    "Отчёт создан",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Ошибка при создании отчёта: {ex.Message}",
-                              "Ошибка",
-                              MessageBoxButtons.OK,
-                              MessageBoxIcon.Error);
+                                "Ошибка",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
             }
         }
-    }
 
+
+
+    }
 }
