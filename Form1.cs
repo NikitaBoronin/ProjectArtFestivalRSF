@@ -287,24 +287,51 @@ namespace ArtFestival
 
             try
             {
+                if (string.IsNullOrWhiteSpace(txtEditTitle.Text))
+                {
+                    MessageBox.Show("Введите название события.");
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(textBoxForEdit.Text))
+                {
+                    MessageBox.Show("Введите описание события.");
+                    return;
+                }
+
+                if (dtpEditDate.Value == null)
+                {
+                    MessageBox.Show("Укажите дату события.");
+                    return;
+                }
+
+                if (cmbEditCategory.SelectedItem == null || string.IsNullOrWhiteSpace
+                    (cmbEditCategory.SelectedItem.ToString()))
+                {
+                    MessageBox.Show("Выберите категорию события.");
+                    return;
+                }
+
+                if (clbEditParticipants.CheckedItems.Count == 0)
+                {
+                    MessageBox.Show("Выберите хотя бы одного участника.");
+                    return;
+                }
                 selectedEvent.Title = txtEditTitle.Text;
                 selectedEvent.Description = textBoxForEdit.Text;
                 selectedEvent.EventDate = dtpEditDate.Value.ToUniversalTime();
-                selectedEvent.Category = cmbEditCategory.SelectedItem?.ToString();
+                selectedEvent.Category = cmbEditCategory.SelectedItem.ToString();
 
-                // Обновление участников
                 selectedEvent.Users.Clear();
                 foreach (var user in clbEditParticipants.CheckedItems.Cast<User>())
                 {
                     selectedEvent.Users.Add(new EventUser { UserID = user.UserID });
                 }
 
-                // Обновление изображения (если было выбрано новое)
                 if (pictureBoxEditImage.Tag is string imagePath && File.Exists(imagePath))
                 {
                     selectedEvent.ImageData = File.ReadAllBytes(imagePath);
                 }
-
                 _db.SaveChanges();
                 LoadAllEvents();
 
@@ -363,7 +390,8 @@ namespace ArtFestival
                 if (isDateFilterEnabled)
                 {
                     // Явно указываем Kind = Utc, чтобы избежать ошибки PostgreSQL
-                    DateTime selectedDate = DateTime.SpecifyKind(dtpMainFilterDate.Value.Date, DateTimeKind.Utc);
+                    DateTime selectedDate = DateTime.SpecifyKind(dtpMainFilterDate.
+                        Value.Date, DateTimeKind.Utc);
 
                     query = query.Where(ev => ev.EventDate.Date == selectedDate);
                 }
@@ -462,26 +490,6 @@ namespace ArtFestival
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
             }
-        }
-
-        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void groupBoxAdd_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabControlMain_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBoxForAdd_Click(object sender, EventArgs e)
-        {
-
         }
     }
 

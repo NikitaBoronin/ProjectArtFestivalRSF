@@ -335,7 +335,7 @@
             groupBoxAdd.TabIndex = 0;
             groupBoxAdd.TabStop = false;
             groupBoxAdd.Text = "Добавление события";
-            groupBoxAdd.Enter += groupBoxAdd_Enter;
+
             // 
             // pictureBoxForAdd
             // 
@@ -346,7 +346,7 @@
             pictureBoxForAdd.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxForAdd.TabIndex = 16;
             pictureBoxForAdd.TabStop = false;
-            pictureBoxForAdd.Click += pictureBoxForAdd_Click;
+
             // 
             // txtAddTitle
             // 
@@ -572,7 +572,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            splitContainer1.Panel1.Paint += splitContainer1_Panel1_Paint;
+
             splitContainer1.Size = new Size(150, 100);
             splitContainer1.SplitterDistance = 69;
             splitContainer1.TabIndex = 0;
@@ -669,7 +669,7 @@
             tabControlMain.SelectedIndex = 0;
             tabControlMain.Size = new Size(875, 592);
             tabControlMain.TabIndex = 0;
-            tabControlMain.SelectedIndexChanged += tabControlMain_SelectedIndexChanged;
+
             // 
             // Form1
             // 
