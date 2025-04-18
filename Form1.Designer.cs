@@ -98,20 +98,20 @@
             // 
             // groupBoxDelete
             // 
-            groupBoxDelete.Anchor = AnchorStyles.None;
             groupBoxDelete.BackColor = Color.White;
             groupBoxDelete.Controls.Add(lbDeleteEvents);
             groupBoxDelete.Controls.Add(btnDelete);
-            groupBoxDelete.Location = new Point(10, 10);
+            groupBoxDelete.Dock = DockStyle.Fill;
+            groupBoxDelete.Location = new Point(0, 0);
             groupBoxDelete.Name = "groupBoxDelete";
-            groupBoxDelete.Size = new Size(849, 549);
+            groupBoxDelete.Size = new Size(867, 554);
             groupBoxDelete.TabIndex = 0;
             groupBoxDelete.TabStop = false;
             groupBoxDelete.Text = "Удаление события";
             // 
             // lbDeleteEvents
             // 
-            lbDeleteEvents.Anchor = AnchorStyles.None;
+            lbDeleteEvents.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lbDeleteEvents.FormattingEnabled = true;
             lbDeleteEvents.Location = new Point(20, 30);
             lbDeleteEvents.Name = "lbDeleteEvents";
@@ -120,8 +120,8 @@
             // 
             // btnDelete
             // 
-            btnDelete.Anchor = AnchorStyles.None;
-            btnDelete.Location = new Point(340, 30);
+            btnDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnDelete.Location = new Point(349, 33);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(200, 30);
             btnDelete.TabIndex = 1;
@@ -140,7 +140,6 @@
             // 
             // groupBoxEdit
             // 
-            groupBoxEdit.Anchor = AnchorStyles.None;
             groupBoxEdit.BackColor = Color.White;
             groupBoxEdit.Controls.Add(textBoxForEdit);
             groupBoxEdit.Controls.Add(label3);
@@ -156,17 +155,18 @@
             groupBoxEdit.Controls.Add(clbEditParticipants);
             groupBoxEdit.Controls.Add(btnEditImage);
             groupBoxEdit.Controls.Add(btnSaveChanges);
-            groupBoxEdit.Location = new Point(10, 10);
+            groupBoxEdit.Dock = DockStyle.Fill;
+            groupBoxEdit.Location = new Point(0, 0);
             groupBoxEdit.Name = "groupBoxEdit";
-            groupBoxEdit.Size = new Size(849, 557);
+            groupBoxEdit.Size = new Size(867, 554);
             groupBoxEdit.TabIndex = 0;
             groupBoxEdit.TabStop = false;
             groupBoxEdit.Text = "Редактирование события";
             // 
             // textBoxForEdit
             // 
-            textBoxForEdit.Anchor = AnchorStyles.None;
-            textBoxForEdit.Location = new Point(102, 402);
+            textBoxForEdit.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            textBoxForEdit.Location = new Point(111, 401);
             textBoxForEdit.Multiline = true;
             textBoxForEdit.Name = "textBoxForEdit";
             textBoxForEdit.Size = new Size(244, 54);
@@ -174,9 +174,9 @@
             // 
             // label3
             // 
-            label3.Anchor = AnchorStyles.None;
+            label3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             label3.AutoSize = true;
-            label3.Location = new Point(10, 402);
+            label3.Location = new Point(19, 401);
             label3.Name = "label3";
             label3.Size = new Size(82, 20);
             label3.TabIndex = 12;
@@ -184,9 +184,9 @@
             // 
             // pictureBoxEditImage
             // 
-            pictureBoxEditImage.Anchor = AnchorStyles.None;
+            pictureBoxEditImage.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pictureBoxEditImage.BorderStyle = BorderStyle.FixedSingle;
-            pictureBoxEditImage.Location = new Point(371, 57);
+            pictureBoxEditImage.Location = new Point(380, 56);
             pictureBoxEditImage.Name = "pictureBoxEditImage";
             pictureBoxEditImage.Size = new Size(472, 334);
             pictureBoxEditImage.SizeMode = PictureBoxSizeMode.Zoom;
@@ -195,10 +195,10 @@
             // 
             // label1
             // 
-            label1.Anchor = AnchorStyles.None;
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 9F);
-            label1.Location = new Point(10, 324);
+            label1.Location = new Point(19, 323);
             label1.Name = "label1";
             label1.Size = new Size(85, 18);
             label1.TabIndex = 10;
@@ -206,10 +206,10 @@
             // 
             // labelEditCategoryy
             // 
-            labelEditCategoryy.Anchor = AnchorStyles.None;
+            labelEditCategoryy.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             labelEditCategoryy.AutoSize = true;
             labelEditCategoryy.Font = new Font("Microsoft Sans Serif", 9F);
-            labelEditCategoryy.Location = new Point(7, 288);
+            labelEditCategoryy.Location = new Point(16, 287);
             labelEditCategoryy.Name = "labelEditCategoryy";
             labelEditCategoryy.Size = new Size(84, 18);
             labelEditCategoryy.TabIndex = 9;
@@ -217,10 +217,10 @@
             // 
             // labelEditDatee
             // 
-            labelEditDatee.Anchor = AnchorStyles.None;
+            labelEditDatee.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             labelEditDatee.AutoSize = true;
             labelEditDatee.Font = new Font("Microsoft Sans Serif", 9F);
-            labelEditDatee.Location = new Point(7, 254);
+            labelEditDatee.Location = new Point(16, 253);
             labelEditDatee.Name = "labelEditDatee";
             labelEditDatee.Size = new Size(47, 18);
             labelEditDatee.TabIndex = 8;
@@ -228,10 +228,10 @@
             // 
             // labelEditTitlee
             // 
-            labelEditTitlee.Anchor = AnchorStyles.None;
+            labelEditTitlee.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             labelEditTitlee.AutoSize = true;
             labelEditTitlee.Font = new Font("Microsoft Sans Serif", 9F);
-            labelEditTitlee.Location = new Point(7, 216);
+            labelEditTitlee.Location = new Point(16, 215);
             labelEditTitlee.Name = "labelEditTitlee";
             labelEditTitlee.Size = new Size(83, 18);
             labelEditTitlee.TabIndex = 7;
@@ -239,54 +239,52 @@
             // 
             // lbEditEvents
             // 
-            lbEditEvents.Anchor = AnchorStyles.None;
             lbEditEvents.FormattingEnabled = true;
-            lbEditEvents.Location = new Point(10, 21);
+            lbEditEvents.Location = new Point(19, 20);
             lbEditEvents.Name = "lbEditEvents";
             lbEditEvents.Size = new Size(336, 164);
             lbEditEvents.TabIndex = 0;
             // 
             // txtEditTitle
             // 
-            txtEditTitle.Anchor = AnchorStyles.None;
-            txtEditTitle.Location = new Point(102, 216);
+            txtEditTitle.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            txtEditTitle.Location = new Point(111, 215);
             txtEditTitle.Name = "txtEditTitle";
             txtEditTitle.Size = new Size(244, 27);
             txtEditTitle.TabIndex = 1;
             // 
             // dtpEditDate
             // 
-            dtpEditDate.Anchor = AnchorStyles.None;
+            dtpEditDate.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             dtpEditDate.CustomFormat = "dd.MM.yyyy HH:mm";
             dtpEditDate.Format = DateTimePickerFormat.Custom;
-            dtpEditDate.Location = new Point(102, 254);
+            dtpEditDate.Location = new Point(111, 253);
             dtpEditDate.Name = "dtpEditDate";
             dtpEditDate.Size = new Size(244, 27);
             dtpEditDate.TabIndex = 2;
             // 
             // cmbEditCategory
             // 
-            cmbEditCategory.Anchor = AnchorStyles.None;
+            cmbEditCategory.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             cmbEditCategory.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbEditCategory.FormattingEnabled = true;
-            cmbEditCategory.Location = new Point(102, 287);
+            cmbEditCategory.Location = new Point(111, 286);
             cmbEditCategory.Name = "cmbEditCategory";
             cmbEditCategory.Size = new Size(244, 28);
             cmbEditCategory.TabIndex = 3;
             // 
             // clbEditParticipants
             // 
-            clbEditParticipants.Anchor = AnchorStyles.None;
             clbEditParticipants.FormattingEnabled = true;
-            clbEditParticipants.Location = new Point(102, 324);
+            clbEditParticipants.Location = new Point(111, 323);
             clbEditParticipants.Name = "clbEditParticipants";
             clbEditParticipants.Size = new Size(244, 70);
             clbEditParticipants.TabIndex = 4;
             // 
             // btnEditImage
             // 
-            btnEditImage.Anchor = AnchorStyles.None;
-            btnEditImage.Location = new Point(394, 21);
+            btnEditImage.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            btnEditImage.Location = new Point(403, 20);
             btnEditImage.Name = "btnEditImage";
             btnEditImage.Size = new Size(433, 30);
             btnEditImage.TabIndex = 5;
@@ -295,8 +293,8 @@
             // 
             // btnSaveChanges
             // 
-            btnSaveChanges.Anchor = AnchorStyles.None;
-            btnSaveChanges.Location = new Point(10, 491);
+            btnSaveChanges.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnSaveChanges.Location = new Point(19, 490);
             btnSaveChanges.Name = "btnSaveChanges";
             btnSaveChanges.Size = new Size(336, 30);
             btnSaveChanges.TabIndex = 6;
@@ -315,7 +313,6 @@
             // 
             // groupBoxAdd
             // 
-            groupBoxAdd.Anchor = AnchorStyles.None;
             groupBoxAdd.BackColor = Color.White;
             groupBoxAdd.Controls.Add(pictureBoxForAdd);
             groupBoxAdd.Controls.Add(txtAddTitle);
@@ -331,9 +328,10 @@
             groupBoxAdd.Controls.Add(labelAddDescriptionn);
             groupBoxAdd.Controls.Add(labelAddCategoryy);
             groupBoxAdd.Controls.Add(labelAddParticipantss);
-            groupBoxAdd.Location = new Point(10, 10);
+            groupBoxAdd.Dock = DockStyle.Fill;
+            groupBoxAdd.Location = new Point(0, 0);
             groupBoxAdd.Name = "groupBoxAdd";
-            groupBoxAdd.Size = new Size(849, 549);
+            groupBoxAdd.Size = new Size(867, 554);
             groupBoxAdd.TabIndex = 0;
             groupBoxAdd.TabStop = false;
             groupBoxAdd.Text = "Добавление события";
@@ -341,65 +339,60 @@
             // 
             // pictureBoxForAdd
             // 
-            pictureBoxForAdd.Anchor = AnchorStyles.None;
-            pictureBoxForAdd.BorderStyle = BorderStyle.FixedSingle;
-            pictureBoxForAdd.Location = new Point(337, 61);
+            pictureBoxForAdd.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pictureBoxForAdd.Location = new Point(348, 62);
             pictureBoxForAdd.Name = "pictureBoxForAdd";
-            pictureBoxForAdd.Size = new Size(506, 387);
+            pictureBoxForAdd.Size = new Size(506, 484);
             pictureBoxForAdd.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxForAdd.TabIndex = 16;
             pictureBoxForAdd.TabStop = false;
+            pictureBoxForAdd.Click += pictureBoxForAdd_Click;
             // 
             // txtAddTitle
             // 
-            txtAddTitle.Anchor = AnchorStyles.None;
-            txtAddTitle.Location = new Point(88, 33);
+            txtAddTitle.Location = new Point(95, 34);
             txtAddTitle.Name = "txtAddTitle";
-            txtAddTitle.Size = new Size(243, 27);
+            txtAddTitle.Size = new Size(247, 27);
             txtAddTitle.TabIndex = 0;
             // 
             // dtpAddDate
             // 
-            dtpAddDate.Anchor = AnchorStyles.None;
             dtpAddDate.CustomFormat = "dd.MM.yyyy HH:mm";
             dtpAddDate.Format = DateTimePickerFormat.Custom;
-            dtpAddDate.Location = new Point(88, 61);
+            dtpAddDate.Location = new Point(95, 62);
             dtpAddDate.Name = "dtpAddDate";
-            dtpAddDate.Size = new Size(243, 27);
+            dtpAddDate.Size = new Size(247, 27);
             dtpAddDate.TabIndex = 1;
             // 
             // txtAddDescription
             // 
-            txtAddDescription.Anchor = AnchorStyles.None;
-            txtAddDescription.Location = new Point(88, 95);
+            txtAddDescription.Location = new Point(95, 96);
             txtAddDescription.Multiline = true;
             txtAddDescription.Name = "txtAddDescription";
-            txtAddDescription.Size = new Size(243, 54);
+            txtAddDescription.Size = new Size(247, 54);
             txtAddDescription.TabIndex = 2;
             // 
             // cmbAddCategory
             // 
-            cmbAddCategory.Anchor = AnchorStyles.None;
             cmbAddCategory.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbAddCategory.FormattingEnabled = true;
-            cmbAddCategory.Location = new Point(88, 161);
+            cmbAddCategory.Location = new Point(95, 162);
             cmbAddCategory.Name = "cmbAddCategory";
-            cmbAddCategory.Size = new Size(243, 28);
+            cmbAddCategory.Size = new Size(247, 28);
             cmbAddCategory.TabIndex = 3;
             // 
             // clbAddParticipants
             // 
-            clbAddParticipants.Anchor = AnchorStyles.None;
             clbAddParticipants.FormattingEnabled = true;
-            clbAddParticipants.Location = new Point(88, 204);
+            clbAddParticipants.Location = new Point(95, 205);
             clbAddParticipants.Name = "clbAddParticipants";
-            clbAddParticipants.Size = new Size(243, 92);
+            clbAddParticipants.Size = new Size(247, 92);
             clbAddParticipants.TabIndex = 4;
             // 
             // btnAddPicture
             // 
-            btnAddPicture.Anchor = AnchorStyles.None;
-            btnAddPicture.Location = new Point(0, 318);
+            btnAddPicture.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnAddPicture.Location = new Point(7, 323);
             btnAddPicture.Name = "btnAddPicture";
             btnAddPicture.Size = new Size(150, 63);
             btnAddPicture.TabIndex = 5;
@@ -408,8 +401,8 @@
             // 
             // btnAddEvent
             // 
-            btnAddEvent.Anchor = AnchorStyles.None;
-            btnAddEvent.Location = new Point(176, 318);
+            btnAddEvent.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnAddEvent.Location = new Point(187, 323);
             btnAddEvent.Name = "btnAddEvent";
             btnAddEvent.Size = new Size(155, 63);
             btnAddEvent.TabIndex = 7;
@@ -418,10 +411,10 @@
             // 
             // labelimageTitle
             // 
-            labelimageTitle.Anchor = AnchorStyles.None;
+            labelimageTitle.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             labelimageTitle.AutoSize = true;
             labelimageTitle.Font = new Font("Microsoft Sans Serif", 10.2F);
-            labelimageTitle.Location = new Point(389, 18);
+            labelimageTitle.Location = new Point(400, 19);
             labelimageTitle.Name = "labelimageTitle";
             labelimageTitle.Size = new Size(126, 20);
             labelimageTitle.TabIndex = 15;
@@ -429,9 +422,8 @@
             // 
             // labelAddTitlee
             // 
-            labelAddTitlee.Anchor = AnchorStyles.None;
             labelAddTitlee.AutoSize = true;
-            labelAddTitlee.Location = new Point(6, 33);
+            labelAddTitlee.Location = new Point(13, 34);
             labelAddTitlee.Name = "labelAddTitlee";
             labelAddTitlee.Size = new Size(80, 20);
             labelAddTitlee.TabIndex = 8;
@@ -439,9 +431,8 @@
             // 
             // labelAddDatee
             // 
-            labelAddDatee.Anchor = AnchorStyles.None;
             labelAddDatee.AutoSize = true;
-            labelAddDatee.Location = new Point(6, 66);
+            labelAddDatee.Location = new Point(13, 67);
             labelAddDatee.Name = "labelAddDatee";
             labelAddDatee.Size = new Size(44, 20);
             labelAddDatee.TabIndex = 9;
@@ -449,9 +440,8 @@
             // 
             // labelAddDescriptionn
             // 
-            labelAddDescriptionn.Anchor = AnchorStyles.None;
             labelAddDescriptionn.AutoSize = true;
-            labelAddDescriptionn.Location = new Point(6, 95);
+            labelAddDescriptionn.Location = new Point(13, 96);
             labelAddDescriptionn.Name = "labelAddDescriptionn";
             labelAddDescriptionn.Size = new Size(82, 20);
             labelAddDescriptionn.TabIndex = 10;
@@ -459,9 +449,8 @@
             // 
             // labelAddCategoryy
             // 
-            labelAddCategoryy.Anchor = AnchorStyles.None;
             labelAddCategoryy.AutoSize = true;
-            labelAddCategoryy.Location = new Point(4, 161);
+            labelAddCategoryy.Location = new Point(11, 162);
             labelAddCategoryy.Name = "labelAddCategoryy";
             labelAddCategoryy.Size = new Size(84, 20);
             labelAddCategoryy.TabIndex = 11;
@@ -469,9 +458,8 @@
             // 
             // labelAddParticipantss
             // 
-            labelAddParticipantss.Anchor = AnchorStyles.None;
             labelAddParticipantss.AutoSize = true;
-            labelAddParticipantss.Location = new Point(6, 204);
+            labelAddParticipantss.Location = new Point(13, 205);
             labelAddParticipantss.Name = "labelAddParticipantss";
             labelAddParticipantss.Size = new Size(84, 20);
             labelAddParticipantss.TabIndex = 12;
@@ -491,7 +479,7 @@
             // 
             // groupBoxView
             // 
-            groupBoxView.Anchor = AnchorStyles.None;
+            groupBoxView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             groupBoxView.BackColor = Color.White;
             groupBoxView.Controls.Add(btn);
             groupBoxView.Controls.Add(button1);
@@ -503,15 +491,15 @@
             groupBoxView.Controls.Add(splitContainer1);
             groupBoxView.Location = new Point(10, 10);
             groupBoxView.Name = "groupBoxView";
-            groupBoxView.Size = new Size(480, 553);
+            groupBoxView.Size = new Size(462, 536);
             groupBoxView.TabIndex = 0;
             groupBoxView.TabStop = false;
             groupBoxView.Text = "События и фильтрация";
             // 
             // btn
             // 
-            btn.Anchor = AnchorStyles.None;
-            btn.Location = new Point(260, 58);
+            btn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btn.Location = new Point(244, 56);
             btn.Name = "btn";
             btn.Size = new Size(200, 30);
             btn.TabIndex = 6;
@@ -520,8 +508,8 @@
             // 
             // button1
             // 
-            button1.Anchor = AnchorStyles.None;
-            button1.Location = new Point(23, 478);
+            button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            button1.Location = new Point(21, 496);
             button1.Name = "button1";
             button1.Size = new Size(252, 30);
             button1.TabIndex = 5;
@@ -531,10 +519,10 @@
             // 
             // label2
             // 
-            label2.Anchor = AnchorStyles.None;
+            label2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft Sans Serif", 9F);
-            label2.Location = new Point(20, 444);
+            label2.Location = new Point(18, 477);
             label2.Name = "label2";
             label2.Size = new Size(136, 18);
             label2.TabIndex = 4;
@@ -542,28 +530,26 @@
             // 
             // dtpMainFilterDate
             // 
-            dtpMainFilterDate.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             dtpMainFilterDate.CustomFormat = "dd.MM.yyyy HH:mm";
             dtpMainFilterDate.Format = DateTimePickerFormat.Custom;
-            dtpMainFilterDate.Location = new Point(20, 25);
+            dtpMainFilterDate.Location = new Point(16, 21);
             dtpMainFilterDate.Name = "dtpMainFilterDate";
             dtpMainFilterDate.Size = new Size(234, 27);
             dtpMainFilterDate.TabIndex = 0;
             // 
             // cmbMainFilterCategory
             // 
-            cmbMainFilterCategory.Anchor = AnchorStyles.None;
             cmbMainFilterCategory.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbMainFilterCategory.FormattingEnabled = true;
-            cmbMainFilterCategory.Location = new Point(20, 60);
+            cmbMainFilterCategory.Location = new Point(18, 58);
             cmbMainFilterCategory.Name = "cmbMainFilterCategory";
             cmbMainFilterCategory.Size = new Size(234, 28);
             cmbMainFilterCategory.TabIndex = 1;
             // 
             // btnMainApplyFilter
             // 
-            btnMainApplyFilter.Anchor = AnchorStyles.None;
-            btnMainApplyFilter.Location = new Point(260, 22);
+            btnMainApplyFilter.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnMainApplyFilter.Location = new Point(244, 20);
             btnMainApplyFilter.Name = "btnMainApplyFilter";
             btnMainApplyFilter.Size = new Size(200, 30);
             btnMainApplyFilter.TabIndex = 2;
@@ -572,11 +558,11 @@
             // 
             // lbMainEvents
             // 
-            lbMainEvents.Anchor = AnchorStyles.None;
+            lbMainEvents.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lbMainEvents.FormattingEnabled = true;
-            lbMainEvents.Location = new Point(20, 100);
+            lbMainEvents.Location = new Point(18, 98);
             lbMainEvents.Name = "lbMainEvents";
-            lbMainEvents.Size = new Size(440, 324);
+            lbMainEvents.Size = new Size(426, 324);
             lbMainEvents.TabIndex = 3;
             // 
             // splitContainer1
@@ -593,7 +579,7 @@
             // 
             // groupBoxDetails
             // 
-            groupBoxDetails.Anchor = AnchorStyles.None;
+            groupBoxDetails.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             groupBoxDetails.BackColor = Color.White;
             groupBoxDetails.Controls.Add(picEventImage);
             groupBoxDetails.Controls.Add(labelEventName);
@@ -601,18 +587,18 @@
             groupBoxDetails.Controls.Add(labelEventTime);
             groupBoxDetails.Controls.Add(labelEventUsers);
             groupBoxDetails.Controls.Add(labelEventCategory);
-            groupBoxDetails.Location = new Point(515, 10);
+            groupBoxDetails.Location = new Point(478, 10);
             groupBoxDetails.Name = "groupBoxDetails";
-            groupBoxDetails.Size = new Size(349, 553);
+            groupBoxDetails.Size = new Size(349, 536);
             groupBoxDetails.TabIndex = 1;
             groupBoxDetails.TabStop = false;
             groupBoxDetails.Text = "Детали события";
             // 
             // picEventImage
             // 
-            picEventImage.Anchor = AnchorStyles.None;
+            picEventImage.Anchor = AnchorStyles.Top;
             picEventImage.BorderStyle = BorderStyle.FixedSingle;
-            picEventImage.Location = new Point(20, 30);
+            picEventImage.Location = new Point(20, 28);
             picEventImage.Name = "picEventImage";
             picEventImage.Size = new Size(310, 160);
             picEventImage.SizeMode = PictureBoxSizeMode.Zoom;
@@ -621,9 +607,9 @@
             // 
             // labelEventName
             // 
-            labelEventName.Anchor = AnchorStyles.None;
-            labelEventName.AutoSize = true;
-            labelEventName.Location = new Point(17, 214);
+            labelEventName.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            labelEventName.Location = new Point(17, 212);
+            labelEventName.MaximumSize = new Size(200, 1000);
             labelEventName.Name = "labelEventName";
             labelEventName.Size = new Size(143, 20);
             labelEventName.TabIndex = 1;
@@ -631,9 +617,9 @@
             // 
             // labelEventDescription
             // 
-            labelEventDescription.Anchor = AnchorStyles.None;
+            labelEventDescription.Anchor = AnchorStyles.Top;
             labelEventDescription.AutoSize = true;
-            labelEventDescription.Location = new Point(17, 250);
+            labelEventDescription.Location = new Point(17, 248);
             labelEventDescription.Name = "labelEventDescription";
             labelEventDescription.Size = new Size(82, 20);
             labelEventDescription.TabIndex = 2;
@@ -641,9 +627,9 @@
             // 
             // labelEventTime
             // 
-            labelEventTime.Anchor = AnchorStyles.None;
+            labelEventTime.Anchor = AnchorStyles.Top;
             labelEventTime.AutoSize = true;
-            labelEventTime.Location = new Point(17, 313);
+            labelEventTime.Location = new Point(17, 311);
             labelEventTime.Name = "labelEventTime";
             labelEventTime.Size = new Size(146, 20);
             labelEventTime.TabIndex = 3;
@@ -651,9 +637,9 @@
             // 
             // labelEventUsers
             // 
-            labelEventUsers.Anchor = AnchorStyles.None;
+            labelEventUsers.Anchor = AnchorStyles.Top;
             labelEventUsers.AutoSize = true;
-            labelEventUsers.Location = new Point(17, 351);
+            labelEventUsers.Location = new Point(17, 349);
             labelEventUsers.Name = "labelEventUsers";
             labelEventUsers.Size = new Size(84, 20);
             labelEventUsers.TabIndex = 4;
@@ -661,9 +647,9 @@
             // 
             // labelEventCategory
             // 
-            labelEventCategory.Anchor = AnchorStyles.None;
+            labelEventCategory.Anchor = AnchorStyles.Top;
             labelEventCategory.AutoSize = true;
-            labelEventCategory.Location = new Point(19, 446);
+            labelEventCategory.Location = new Point(19, 444);
             labelEventCategory.Name = "labelEventCategory";
             labelEventCategory.Size = new Size(84, 20);
             labelEventCategory.TabIndex = 5;
@@ -671,26 +657,25 @@
             // 
             // tabControlMain
             // 
-            tabControlMain.Anchor = AnchorStyles.None;
+            tabControlMain.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tabControlMain.Controls.Add(tabPageMain);
             tabControlMain.Controls.Add(tabPageAdd);
             tabControlMain.Controls.Add(tabPageEdit);
             tabControlMain.Controls.Add(tabPageDelete);
             tabControlMain.ItemSize = new Size(120, 30);
-            tabControlMain.Location = new Point(-3, -4);
+            tabControlMain.Location = new Point(0, 0);
             tabControlMain.Name = "tabControlMain";
             tabControlMain.Padding = new Point(10, 5);
             tabControlMain.SelectedIndex = 0;
             tabControlMain.Size = new Size(875, 592);
             tabControlMain.TabIndex = 0;
+            tabControlMain.SelectedIndexChanged += tabControlMain_SelectedIndexChanged;
             // 
             // Form1
             // 
             BackColor = Color.White;
-            ClientSize = new Size(871, 588);
+            ClientSize = new Size(875, 592);
             Controls.Add(tabControlMain);
-            FormBorderStyle = FormBorderStyle.Fixed3D;
-            MaximumSize = new Size(893, 639);
             MinimumSize = new Size(893, 639);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;

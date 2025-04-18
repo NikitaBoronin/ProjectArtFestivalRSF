@@ -473,6 +473,16 @@ namespace ArtFestival
         {
 
         }
+
+        private void tabControlMain_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBoxForAdd_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }
